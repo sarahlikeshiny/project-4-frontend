@@ -2,6 +2,7 @@
 <html ng-app= "auroraApp">
   <head>
     <meta charset="utf-8">
+    <base href="/">
     <title>Aurora Hunt</title>
     <!-- inject:js -->
     <!-- endinject -->
@@ -11,9 +12,11 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOk52BZUsfmPLLWjrXH-wu3IEOqjuk7nA&libraries=visualization">
   </script>
   </head>
+  <main ui-view></main>
   <body>
+    <google-map center="{lat: -33.865427, lng: 151.196123}"></google-map>
   </body>
-  <google-map center="{lat: -33.865427, lng: 151.196123}"></google-map>
+
 
 
 
