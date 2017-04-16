@@ -1,0 +1,7 @@
+<ul>
+  <li ng-repeat="trip in tripsIndex.all">
+
+    <a ui-sref="tripsShow({ id: trip.id })"><h2>{{ trip.name }}</h2></a>
+    <p><strong>{{ trip.date }}</strong> <em>{{ trip.origin }}</em></p>
+  </li>
+</ul>

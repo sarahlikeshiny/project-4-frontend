@@ -1,0 +1,17 @@
+<form ng-submit="tripsNew.create()">
+  <div>
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" ng-model="tripsNew.trip.name">
+  </div>
+  <div>
+    <label for="date">Date</label>
+    <input type="text" name="date" id="date" ng-model="tripsNew.trip.date">
+  </div>
+  <div>
+    <label for="origin">Starting Airport</label>
+    <input type="text" name="origin" id="origin" ng-model="tripsNew.trip.origin">
+  </div>
+
+
+  <button>Create</button>
+</form>

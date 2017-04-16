@@ -12,28 +12,28 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl: 'js/views/home.html'
     })
 
-    // .state('dateNightsIndex', {//index page for all dates created by all users
-    //   url: '/alldates',
-    //   templateUrl: 'js/views/dateNights/index.html',
-    //   controller: 'DateNightsIndexCtrl as dateNightsIndex'
-    // })
-    // .state('dateNightsNew', {//new date form page
-    //   url: '/date/new',
-    //   templateUrl: 'js/views/dateNights/new.html',
-    //   controller: 'DateNightsNewCtrl as dateNightsNew'
-    // })
-    //
-    // .state('dateNightsEdit', {//google maps page
-    //   url: '/date/:id/edit',
-    //   templateUrl: 'js/views/dateNights/edit.html',
-    //   controller: 'DateNightsEditCtrl as dateNightsEdit'
-    // })
-    //
-    // .state('dateNightsShow', {//shows details of the date record
-    //   url: '/date/:id',
-    //   templateUrl: 'js/views/dateNights/show.html',
-    //   controller: 'DateNightsShowCtrl as dateNightsShow'
-    // })
+    .state('tripsIndex', {
+      url: '/alltrips',
+      templateUrl: 'js/views/trips/index.html',
+      controller: 'TripsIndexCtrl as tripsIndex'
+    })
+    .state('tripsNew', {//new date form page
+      url: '/trip/new',
+      templateUrl: 'js/views/trips/new.html',
+      controller: 'TripsNewCtrl as tripsNew'
+    })
+
+    .state('tripsEdit', {
+      url: '/trip/:id/edit',
+      templateUrl: 'js/views/trips/edit.html',
+      controller: 'TripsEditCtrl as tripsEdit'
+    })
+
+    .state('tripsShow', {
+      url: '/trip/:id',
+      templateUrl: 'js/views/trips/show.html',
+      controller: 'TripsShowCtrl as tripsShow'
+    })
     //
     // .state('cinemas', {
     //   url: '/date/:id/addcinema',

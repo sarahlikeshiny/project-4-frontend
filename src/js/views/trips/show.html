@@ -1,0 +1,8 @@
+<img ng-src="{{ tripsShow.trip.image }}">
+
+<h2>{{ tripsShow.trip.name }}</h2>
+<p><strong>{{ tripsShow.trip.date }}</strong>
+<em>{{ tripsShow.trip.origin }}</em></p>
+
+<a ui-sref="tripsEdit({ id: tripsShow.trip.id })">Edit</a>
+<button ng-click="tripsShow.delete()">Delete</button>

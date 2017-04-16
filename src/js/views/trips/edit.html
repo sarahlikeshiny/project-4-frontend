@@ -1,0 +1,19 @@
+<h1>edit</h1>
+
+<form ng-submit="tripsEdit.update()">
+  <div>
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" ng-model="tripsEdit.trip.name">
+  </div>
+  <div>
+    <label for="date">Date</label>
+    <input type="text" name="date" id="date" ng-model="tripsEdit.trip.date">
+  </div>
+  <div>
+    <label for="origin">Starting Airport</label>
+    <input type="text" name="origin" id="origin" ng-model="tripsEdit.trip.origin">
+  </div>
+
+
+  <button>Update</button>
+</form>

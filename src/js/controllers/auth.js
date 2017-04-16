@@ -26,7 +26,8 @@ function LoginCtrl($auth, $state, $rootScope) {
         .then((res) => {
           const currentUserId = $auth.getPayload().userId;
           $rootScope.$broadcast('loggedIn', res.data.user);
-          $state.go('usersShow', { id: currentUserId });
+          // $state.go('usersShow', { id: currentUserId });
+          $state.go('tripsNew');
         });
     }
   }
