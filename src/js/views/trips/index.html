@@ -1,19 +1,16 @@
 <h1>index</h1>
-
-{{tripsIndex.trips.locations}}
-
+{{dBLocationsIndex.all}}
 {{2+2}}
 <ul>
-  <li ng-repeat="location in tripsIndex.locations">
+  <li ng-repeat="location in dBLocationsIndex.all">
 
     <a ui-sref="tripsShow({ id: trip.id })"><h2>{{ location.name }}</h2></a>
     <p>{{location.lat}}</p>
-    <p>{{location.long}}</p>
-    <p><strong>{{ trip.date }}</strong> <em>{{ trip.origin }}</em></p>
+    <p>{{location.lng}}</p>
   </li>
 </ul>
 
 
 <body>
-  <google-map center="{lat: -33.865427, lng: 151.196123}"></google-map>
+  <google-map locations="locationsIndex.locations" center="{lat: -33.865427, lng: 151.196123}"></google-map>
 </body>

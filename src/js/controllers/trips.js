@@ -5,22 +5,24 @@ angular
   .controller('TripsShowCtrl', TripsShowCtrl)
   .controller('TripsEditCtrl', TripsEditCtrl);
 
-TripsIndexCtrl.$inject = ['Trip', 'auroras'];
-function TripsIndexCtrl(Trip, auroras) {
+// TripsIndexCtrl.$inject = ['Trip','auroras'];
+// function TripsIndexCtrl(Trip, auroras) {
+TripsIndexCtrl.$inject = ['Trip'];
+function TripsIndexCtrl(Trip) {
   const vm = this;
 
   vm.all = Trip.query();
-  vm.locations = [];
+  // vm.locations = [];
 
-  function getAuroras() {
-    auroras.getAuroras()
-      .then((response) => {
-        vm.locations = response;
-        console.log(vm.locations);
-      });
-  }
-
-  getAuroras();
+  // function getAuroras() {
+  //   auroras.getAuroras()
+  //     .then((response) => {
+  //       vm.locations = response;
+  //       console.log(vm.locations[0].lat);
+  //     });
+  // }
+  //
+  // getAuroras();
 }
 
 

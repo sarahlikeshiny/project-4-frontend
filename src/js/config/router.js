@@ -12,11 +12,11 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl: 'js/views/home.html'
     })
 
-    .state('tripsIndex', {
-      url: '/alltrips',
-      templateUrl: 'js/views/trips/index.html',
-      controller: 'TripsIndexCtrl as tripsIndex'
-    })
+    // .state('tripsIndex', {
+    //   url: '/alltrips',
+    //   templateUrl: 'js/views/trips/index.html',
+    //   controller: 'TripsIndexCtrl as tripsIndex'
+    // })
     .state('tripsNew', {//new date form page
       url: '/trip/new',
       templateUrl: 'js/views/trips/new.html',
@@ -34,6 +34,12 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl: 'js/views/trips/show.html',
       controller: 'TripsShowCtrl as tripsShow'
     })
+    .state('dBLocationsIndex', {
+      url: '/alltrips',
+      templateUrl: 'js/views/trips/index.html',
+      controller: 'DBLocationsIndexCtrl as dBLocationsIndex'
+    })
+
     //
     // .state('cinemas', {
     //   url: '/date/:id/addcinema',
@@ -63,11 +69,6 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       url: '/register',
       templateUrl: 'js/views/auth/register.html',
       controller: 'RegisterCtrl as register'
-    })
-    .state('testing', {
-      url: '/testpage',
-      templateUrl: 'js/views/testing.html',
-      controller: 'AurorasCtrl as auroras'
     });
 
 
