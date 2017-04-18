@@ -34,10 +34,10 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl: 'js/views/trips/show.html',
       controller: 'TripsShowCtrl as tripsShow'
     })
-    .state('dBLocationsIndex', {
+    .state('probabiliiesIndex', {
       url: '/alltrips',
       templateUrl: 'js/views/trips/index.html',
-      controller: 'DBLocationsIndexCtrl as dBLocationsIndex'
+      controller: 'ProbabilitiesIndexCtrl as probabilitiesIndex'
     })
 
     //

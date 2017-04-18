@@ -1,16 +1,15 @@
 <h1>index</h1>
-{{dBLocationsIndex.all}}
-{{2+2}}
-<ul>
-  <li ng-repeat="location in dBLocationsIndex.all">
 
-    <a ui-sref="tripsShow({ id: trip.id })"><h2>{{ location.name }}</h2></a>
-    <p>{{location.lat}}</p>
-    <p>{{location.lng}}</p>
+<!-- <ul>
+  <li ng-repeat="probability in probabilitiesIndex.all">
+
+    <a ui-sref="tripsShow({ id: trip.id })"><h2>{{ probability.location.name }}</h2></a>
+    <p>{{probability.location.lat}}</p>
+    <p>{{probability.location.lng}}</p>
   </li>
 </ul>
-
+ -->
 
 <body>
-  <google-map locations="dBLocationsIndex.all" lat="dBLocationsIndex.lat" lng="dbLocationsIndex.lng" center="{lat: -33.865427, lng: 151.196123}" ng-if="dBLocationsIndex.all.$resolved"></google-map>
+  <google-map locations="probabilitiesIndex.all" center="{lat: -33.865427, lng: 151.196123}" ng-if="probabilitiesIndex.all.$resolved"></google-map>
 </body>

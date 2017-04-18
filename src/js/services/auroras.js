@@ -1,6 +1,6 @@
-angular
-  .module('auroraApp')
-  .service('auroras', Auroras);
+// angular
+//   .module('auroraApp')
+//   .service('auroras', Auroras);
 
 // Auroras.$inject = ['$http', 'API_URL'];
 // function Auroras($http, API_URL) {
