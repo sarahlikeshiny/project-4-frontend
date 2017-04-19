@@ -26,8 +26,8 @@ function TripsIndexCtrl(Trip) {
 }
 
 
-TripsNewCtrl.$inject = ['Trip', '$state'];
-function TripsNewCtrl(Trip, $state) {
+TripsNewCtrl.$inject = ['Trip', '$state', '$scope'];
+function TripsNewCtrl(Trip, $state, $scope) {
   const vm = this;
   vm.trip = {};
 
@@ -38,6 +38,16 @@ function TripsNewCtrl(Trip, $state) {
       .$promise
       .then(() => $state.go('tripsIndex'));
   }
+
+  function getLatLng(lat, lng) {
+    console.log('inside here');
+    console.log(lat, lng);
+    vm.chosenLatLng = { lat, lng };
+    $scope.$apply();
+
+  }
+
+  vm.getLatLng = getLatLng;
 
   vm.create = tripsCreate;
 }

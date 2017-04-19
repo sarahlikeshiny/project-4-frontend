@@ -1,4 +1,4 @@
-<form ng-submit="tripsNew.create()">
+<form ng-submit="tripsNew.create()" id=newTrip.form>
   <div>
     <label for="name">Name</label>
     <input type="text" name="name" id="name" ng-model="tripsNew.trip.name">
@@ -8,8 +8,16 @@
     <input type="text" name="date" id="date" ng-model="tripsNew.trip.date">
   </div>
   <div>
+    <input type="text" class="form-control" autocomplete geometry="tripsNew.trip.geometry" ng-model="tripsNew.trip.origin_airport"  required name="dateAddress" id="dateAddress" placeholder = "enter your starting aiport">
+    </div>
+  <div>
     <label for="origin">Starting Airport</label>
     <input type="text" name="origin" id="origin" ng-model="tripsNew.trip.origin">
+  </div>
+  <div>
+    <label for="origin">Destination Airport</label>
+    <input type="text" name="origin" id="origin" ng-model="tripsNew.trip.origin">
+  </div>
   </div>
 
 
