@@ -59,6 +59,12 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       controller: 'UsersShowCtrl as usersShow'
     })
 
+    // .state('testing', {
+    //   url: '/testing',
+    //   templateUrl: 'js/views/testing.html',
+    //   controller: 'AirportsIndexCtrl as airports'
+    // })
+
     .state('login', {
       url: '/login',
       templateUrl: 'js/views/auth/login.html',
