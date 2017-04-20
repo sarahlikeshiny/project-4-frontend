@@ -12,7 +12,6 @@ function googleMap($window) {
     scope: {
       center: '=',
       locations: '=',
-      selected: '=',
       lat: '=',
       lng: '=',
       getLatLng: '&'
@@ -22,6 +21,7 @@ function googleMap($window) {
       const map = new $window.google.maps.Map(element[0], {
         zoom: 2,
         center: $scope.center,
+        scrollWheel: false,
         styles: [
             {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
             {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
@@ -151,10 +151,14 @@ function googleMap($window) {
         $scope.lat = location.latitude;
         $scope.lng = location.longitude;
         $scope.selected = location;
-        console.log($scope.lat, $scope.lng);
+        // console.log($scope.lat, $scope.lng);
         $scope.getLatLng({lat: $scope.lat, lng: $scope.lng});
-        const htmlElement = `<div id="infoWindow">
+        const htmlElement = `<div id="iw-container">
+                                <h4 id="iw-title">${location.location.name}</h4>
+                                <p id="iw-subtitle">${location.location.country}</p>
+                                <p id="iw-content">Aurora Probabilty ${location.probability} %</p>
                                 <a>more info in here!</a>
+                                '<div class="iw-bottom-gradient"></div>
                                </div>`;
         if(infoWindow) infoWindow.close();
 
@@ -165,9 +169,12 @@ function googleMap($window) {
 
         map.setCenter(circle.center);
         map.panTo(circle.center);
+
+      setTimeout(() =>{
         infoWindow.open(map, circle);
-      }
+      }, 500);
     }
+  }
   };
   return directive;
 }

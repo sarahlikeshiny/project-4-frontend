@@ -12,7 +12,7 @@ function ProbabilitiesIndexCtrl(Probability) {
   const vm = this;
 
   vm.all = Probability.query();
-
+  console.log(vm.all);
 }
 
 

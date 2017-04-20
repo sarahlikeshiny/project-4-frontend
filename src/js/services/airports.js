@@ -6,10 +6,11 @@ angular
 Airports.$inject = ['$http', 'API_URL'];
 function Airports($http, API_URL) {
   const vm = this;
-  function getAirports() {
+  function getAirports(lat, lng) {
+    console.log('service', lat, lng);
 
     return $http
-    .get(`${API_URL}/airports`)
+    .get(`${API_URL}/airports`, { params: { lat, lng} })
     .then((response) => {
       response.data.Quotes.forEach((quote) => {
         const destination = response.data.Places.find((place) => {

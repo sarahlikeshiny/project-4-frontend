@@ -26,10 +26,11 @@ function TripsIndexCtrl(Trip) {
 }
 
 
-TripsNewCtrl.$inject = ['Trip', '$state', '$scope'];
-function TripsNewCtrl(Trip, $state, $scope) {
+TripsNewCtrl.$inject = ['Trip', '$state', '$scope', 'airports'];
+function TripsNewCtrl(Trip, $state, $scope, airports) {
   const vm = this;
   vm.trip = {};
+  vm.flights = [];
 
   function tripsCreate() {
     // wrap the data in a `trip` object
@@ -43,12 +44,21 @@ function TripsNewCtrl(Trip, $state, $scope) {
     console.log('inside here');
     console.log(lat, lng);
     vm.chosenLatLng = { lat, lng };
+    console.log('chosenLatLng', vm.chosenLatLng);
     $scope.$apply();
 
+    getAirports(lat, lng);
+
+    function getAirports() {
+      airports.getAirports(lat, lng)
+      .then((quotes) => {
+        console.log(quotes);
+        vm.flights = quotes;
+        console.log('vm.flights', vm.flights);
+      });
+    }
   }
-
   vm.getLatLng = getLatLng;
-
   vm.create = tripsCreate;
 }
 
