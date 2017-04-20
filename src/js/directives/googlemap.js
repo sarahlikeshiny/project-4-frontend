@@ -14,6 +14,7 @@ function googleMap($window) {
       locations: '=',
       lat: '=',
       lng: '=',
+      aurora: '=',
       getLatLng: '&'
     },
 
@@ -153,10 +154,9 @@ function googleMap($window) {
         $scope.selected = location;
         // console.log($scope.lat, $scope.lng);
         $scope.getLatLng({lat: $scope.lat, lng: $scope.lng});
+
         const htmlElement = `<div id="iw-container">
                                 <h4 id="iw-title">${location.location.name}</h4>
-                                <p id="iw-subtitle">${location.location.country}</p>
-                                <p id="iw-content">Aurora Probabilty ${location.probability} %</p>
                                 <a>more info in here!</a>
                                 '<div class="iw-bottom-gradient"></div>
                                </div>`;

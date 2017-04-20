@@ -1,24 +1,20 @@
-<form ng-submit="tripsNew.create()" id=newTrip.form>
+<form ng-submit="tripsNew.create()" id="newTrip.form">
   <div>
-    <label for="name">Name</label>
+    <label for="name">Name of the trip?</label>
     <input type="text" name="name" id="name" ng-model="tripsNew.trip.name">
   </div>
   <div>
-    <label for="date">Date</label>
-    <input type="text" name="date" id="date" ng-model="tripsNew.trip.date">
+    <label for="date">When would you like to go?</label>
+    <input type="date" name="date" id="date" ng-model="tripsNew.trip.date">
   </div>
   <div>
-    <input type="text" class="form-control" autocomplete geometry="tripsNew.trip.geometry" ng-model="tripsNew.trip.origin_airport"  required name="dateAddress" id="dateAddress" placeholder = "enter your starting aiport">
+    <input type="text" class="form-control" autocomplete geometry="tripsNew.trip.geometry" ng-model="tripsNew.trip.origin_airport"  required name="dateAddress" id="dateAddress" placeholder = "enter your starting location">
     </div>
-    
+    <input type="hidden" ng-model="tripsNew.trip.origin_lat" name="Lat">
+    <input type="hidden" ng-model="tripsNew.trip.origin_lat" name="Lng">
   <div>
-    <label for="origin">Starting Airport</label>
-    <input type="text" name="origin" id="origin" ng-model="tripsNew.trip.origin">
-  </div>
-  <div>
-    <label for="origin">Destination Airport</label>
-    <input type="text" name="origin" id="origin" ng-model="tripsNew.trip.origin">
-  </div>
+    {{tripsNew.trip.geometry}}
+    {{tripsNew.trip.origin_lat}}
   </div>
 
 

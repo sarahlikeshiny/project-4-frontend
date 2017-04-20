@@ -34,10 +34,15 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl: 'js/views/trips/show.html',
       controller: 'TripsShowCtrl as tripsShow'
     })
-    .state('probabiliiesIndex', {
+    .state('tripsDestination', {
+      url: '/auroras/:id',
+      templateUrl: 'js/views/trips/destination.html',
+      controller: 'MapPageCtrl as mapPage'
+    })
+    .state('tripsIndex', {
       url: '/alltrips',
       templateUrl: 'js/views/trips/index.html',
-      controller: 'ProbabilitiesIndexCtrl as probabilitiesIndex'
+      controller: 'TripsIndexCtrl as tripsIndex'
     })
 
     //

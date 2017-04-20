@@ -1,22 +1,10 @@
-<h1>index</h1>
 
-<div ng-controller="TripsNewCtrl as tripsNew">
-  <google-map locations="probabilitiesIndex.all" lat="tripsNew.trip.destination_lat" lng="tripsNew.trip.destination_lng" center="{lat: 51.5098657, lng: -0.118092}" ng-if="probabilitiesIndex.all.$resolved" get-lat-lng="tripsNew.getLatLng(lat, lng)"></google-map>
-
-  <button class="btn" ng-click="tripsNew.create()">Choose this location</button>
-
-  <ul>
-    <li ng-repeat="flight in tripsNew.flights">
-      <div class="row">
-        <div class="col-md-3"
-        <a ui-sref="tripsShow({ id: trip.id })"><h2>{{ flight.DestinationCity }}</h2></a>
-        </div>
-      <div class="col-md-2">
-        <p>£{{ flight.MinPrice}}</p>
-      </div>
-      <div class="col-md-4">
-        <p>{{ flight.CarrierName}}</p>
-      </div>
-    </li>
-  </ul>
-</div>
+<div class="row">
+  <div ng-repeat="trip in tripsIndex.all" class="col-md-4 dates-content">
+    <a ui-sref="tripsShow({ id: trip.id })"><h3>{{ trip.name }}</h3></a>
+    <h3>{{ trip.date }}</h3>
+    <h3>{{ trip.origin_airport }}</h3>
+    <h3>{{ trip.origin_lat }}</h3>
+    <h3>{{ trip.origin_lng }}</h3>
+    <h3>{{ trip.user }}</h3>
+  </div>
