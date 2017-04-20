@@ -26,11 +26,12 @@ function TripsIndexCtrl(Trip) {
 }
 
 
-TripsNewCtrl.$inject = ['Trip', '$state', '$scope', 'airports'];
-function TripsNewCtrl(Trip, $state, $scope, airports) {
+TripsNewCtrl.$inject = ['Trip', '$state', '$scope', 'airports', 'auroras'];
+function TripsNewCtrl(Trip, $state, $scope, airports, auroras) {
   const vm = this;
   vm.trip = {};
   vm.flights = [];
+  vm.aurora = [];
 
   function tripsCreate() {
     // wrap the data in a `trip` object
@@ -54,9 +55,20 @@ function TripsNewCtrl(Trip, $state, $scope, airports) {
       .then((quotes) => {
         console.log(quotes);
         vm.flights = quotes;
-        console.log('vm.flights', vm.flights);
+        // console.log('vm.flights', vm.flights);
       });
     }
+
+    getAuroras(lat, lng);
+
+    function getAuroras() {
+      auroras.getAuroras(lat, lng)
+        .then((data) => {
+          console.log(data);
+          vm.aurora = data;
+        });
+    }
+
   }
   vm.getLatLng = getLatLng;
   vm.create = tripsCreate;

@@ -4,20 +4,13 @@
   <google-map locations="probabilitiesIndex.all" lat="tripsNew.trip.destination_lat" lng="tripsNew.trip.destination_lng" center="{lat: 51.5098657, lng: -0.118092}" ng-if="probabilitiesIndex.all.$resolved" get-lat-lng="tripsNew.getLatLng(lat, lng)"></google-map>
 
   <button class="btn" ng-click="tripsNew.create()">Choose this location</button>
-  <h3>lat:{{tripsNew.trip.destination_lat}}</h3>
-  <h3>lng:{{tripsNew.trip.destination_lng}}</h3>
-</div>
 
-{{tripsNew.flights}}
   <ul>
     <li ng-repeat="flight in tripsNew.flights">
       <div class="row">
         <div class="col-md-3"
         <a ui-sref="tripsShow({ id: trip.id })"><h2>{{ flight.DestinationCity }}</h2></a>
         </div>
-      <div class="col-md-3">
-        <p>{{ flight.DestinationCountry}}</p>
-      </div>
       <div class="col-md-2">
         <p>£{{ flight.MinPrice}}</p>
       </div>
@@ -26,3 +19,4 @@
       </div>
     </li>
   </ul>
+</div>
