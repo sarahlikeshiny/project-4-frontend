@@ -4,10 +4,8 @@ angular
   .controller('TripsNewCtrl', TripsNewCtrl)
   .controller('TripsShowCtrl', TripsShowCtrl)
   .controller('TripsEditCtrl', TripsEditCtrl);
-  // .controller('TripsDeleteCtrl', TripsDeleteCtrl);
 
-// TripsIndexCtrl.$inject = ['Trip','auroras'];
-// function TripsIndexCtrl(Trip, auroras) {
+
 TripsIndexCtrl.$inject = ['Trip'];
 function TripsIndexCtrl(Trip) {
   const vm = this;
@@ -34,30 +32,27 @@ function TripsNewCtrl(Trip, $state ) {
   vm.create = tripsCreate;
 }
 
-TripsShowCtrl.$inject = ['Trip', '$stateParams', '$state', '$uibModal'];
-function TripsShowCtrl(Trip, $stateParams, $state, $uibModal) {
+TripsShowCtrl.$inject = ['Trip', '$stateParams', '$state'];
+function TripsShowCtrl(Trip, $stateParams, $state) {
   const vm = this;
   vm.trip = Trip.get($stateParams);
 
-  function openModal(){
-    $uibModal.open({
-      templateUrl: 'js/views/partials/tripsDelete.html',
-      controller: 'TripsDeleteCtrl as tripsDelete',
-      resolve: {
-        currentTrips: () => {
-          return vm.trip;
-        }
-      }
-    });
+  function tripsDelete() {
+    vm.trip
+      .$remove()
+      .then(() => $state.go('alltrips'));
   }
-  vm.open = openModal;
+
+  vm.delete = tripsDelete;
 }
 
 
 
-TripsEditCtrl.$inject = ['Trip', '$stateParams', '$state' ];
-function TripsEditCtrl(Trip, $stateParams, $state ) {
+TripsEditCtrl.$inject = ['Trip', '$stateParams', '$state', '$scope', '$auth', 'airports', 'auroras' ];
+function TripsEditCtrl(Trip, $stateParams, $state, $scope, $auth, airports, auroras ) {
   const vm = this;
+  vm.flights = [];
+  vm.aurora = [];
 
   vm.trip = Trip.get($stateParams);
 
@@ -69,4 +64,50 @@ function TripsEditCtrl(Trip, $stateParams, $state ) {
   }
 
   vm.update = tripsUpdate;
+
+  function getLatLng(lat, lng) {
+    console.log('inside here');
+    console.log(lat, lng);
+    vm.chosenLatLng = { lat, lng };
+    console.log('chosenLatLng', vm.chosenLatLng);
+    $scope.$apply();
+
+
+    getAirports(vm.trip.origin_lat, vm.trip.origin_lng, lat, lng);
+
+    function getAirports() {
+      console.log('controller', vm.trip.origin_lat);
+      airports.getAirports(vm.trip.origin_lat, vm.trip.origin_lng,lat, lng)
+      .then((quotes) => {
+        console.log(quotes);
+        vm.flights = quotes;
+        // console.log('vm.flights', vm.flights);
+      });
+    }
+
+    getAuroras(lat, lng);
+
+    function getAuroras() {
+      auroras.getAuroras(lat, lng)
+        .then((data) => {
+          console.log(data);
+          vm.aurora = data;
+        });
+    }
+
+  function addFlightToRecord(DestinationCity, DestinationAirport, OriginAirport, MinPrice, CarrierName, lat, lng) {
+    vm.trip.destination_name = DestinationCity;
+    vm.trip.destination_airport = DestinationAirport;
+    vm.trip.origin_airport = OriginAirport;
+    vm.trip.price = MinPrice;
+    vm.trip.airline = CarrierName;
+    vm.trip.destination_lat = lat;
+    vm.trip.destination_lng =lng;
+  }
+
+  vm.addFlightToRecord = addFlightToRecord;
+
+  }
+
+  vm.getLatLng = getLatLng;
 }

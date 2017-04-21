@@ -8,7 +8,6 @@ function autocomplete($window) {
     restrict: 'A',
     require: 'ngModel',
     scope: {
-      geometry: '=',
       originLat: '=originlat',
       originLng: '=originlng'
     },

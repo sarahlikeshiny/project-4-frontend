@@ -3,6 +3,7 @@
 <h2>{{ tripsShow.trip.name }}</h2>
 <p><strong>{{ tripsShow.trip.date }}</strong>
 <em>{{ tripsShow.trip.origin }}</em></p>
+<em>{{ tripsShow.trip.destination_aiport }}</em></p>
 
 <a ui-sref="tripsEdit({ id: tripsShow.trip.id })">Edit</a>
-<button ng-click="tripsShow.open()" class="btn btn-danger">Delete</button>
+<button ng-click="tripsShow.delete()" class="btn btn-danger">Delete</button>

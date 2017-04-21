@@ -1,5 +1,38 @@
 <h1>edit</h1>
 
+
+
+{{tripsEdit.trip}}
+{{probabilitiesIndexCtrl.all}}
+<div ng-controller= "ProbabilitiesIndexCtrl  as probabilities">
+  <google-map locations="probabilities.all" lat="tripsEdit.trip.destination_lat" lng="tripsEdit.trip.destination_lng" aurora="tripsEdit.aurora" center="{lat: 51.5098657, lng: -0.118092}" ng-if="probabilities.all.$resolved" get-lat-lng="tripsEdit.getLatLng(lat, lng)"></google-map>
+</div>
+
+
+  <button class="btn" ng-click="tripsEdit.update()">Choose this location</button>
+
+  <ul ng-click="tripsEdit.addFlightToRecord(DestinationCity, DestinationAirport,OriginAirport, MinPrice, CarrierName, lat, lng)" ng-class="{ 'selected': tripsEdit.trip.destination_airport === flight.DestinationAiport && tripsEdit.trip.origin_airport === flight.OriginAirport && tripsEdit.trip.destination_name === flight.DestinationCity && tripsEdit.trip.price === flight.MinPrice && tripsEdit.trip.airline === flight.CarrierName  }">
+    <li ng-repeat="flight in tripsEdit.flights">
+      <div class="row">
+        <div class="col-md-3"
+        <a ui-sref="tripsEdit({ id: trip.id })"><h2>{{ flight.DestinationCity }}</h2></a>
+        </div>
+        <div class="col-md-2">
+          <p>{{ flight.DestinationAirport}}</p>
+        </div>
+        <div class="col-md-2">
+          <p>{{ flight.OriginAirport}}</p>
+        </div>
+      <div class="col-md-2">
+        <p>£{{ flight.MinPrice}}</p>
+      </div>
+      <div class="col-md-4">
+        <p>{{ flight.CarrierName}}</p>
+      </div>
+    </li>
+  </ul>
+
+
 <form ng-submit="tripsEdit.update()">
   <div>
     <label for="name">Name</label>

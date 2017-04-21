@@ -13,7 +13,14 @@
   </script>
   </head>
   <body>
-
+    <ul class="nav navbar-nav">
+       <li><a ui-sref="home" ui-sref-active="active">home</a></li>
+       <li ng-if="main.isAuthenticated()"><a ui-sref="tripsNew" ui-sref-active="active">Plan a Trip</a></li>
+       <li ng-if="!main.isAuthenticated()"><a ui-sref="login" ui-sref-active="active">login</a></li>
+       <li ng-if="!main.isAuthenticated()"><a ui-sref="register" ui-sref-active="active">register</a></li>
+       <li ng-if="main.isAuthenticated()"><a ui-sref="usersShow({ id: main.currentUserId })" ui-sref-active="active">profile</a></li>
+       <li ng-if="main.isAuthenticated()"><a ng-click="main.logout()" href="#" ui-sref-active="active">logout</a></li>
+     </ul>
 
   <main ui-view></main>
   </body>
