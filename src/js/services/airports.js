@@ -6,12 +6,13 @@ angular
 Airports.$inject = ['$http', 'API_URL'];
 function Airports($http, API_URL) {
   const vm = this;
-  function getAirports(lat, lng) {
-    console.log('service', lat, lng);
+  function getAirports(origin_lat, origin_lng, lat, lng) {
+    console.log('service', origin_lat, origin_lng);
 
     return $http
-    .get(`${API_URL}/airports`, { params: { lat, lng} })
+    .get(`${API_URL}/airports`, { params: { origin_lat, origin_lng, lat, lng} })
     .then((response) => {
+      console.log(response);
       response.data.Quotes.forEach((quote) => {
         const destination = response.data.Places.find((place) => {
           return place.PlaceId === quote.OutboundLeg.DestinationId;
@@ -19,6 +20,14 @@ function Airports($http, API_URL) {
 
         quote.DestinationCity = destination.CityName;
         quote.DestinationCountry = destination.CountryName;
+        quote.DestinationAirport = destination.Name;
+
+        const origin = response.data.Places.find((place) => {
+          return place.PlaceId === quote.OutboundLeg.OriginId;
+        });
+
+        quote.OriginCity = origin.CityName;
+        quote.OriginAirport = origin.Name;
 
         const carrier = response.data.Carriers.find((carrier) => {
           return carrier.CarrierId === quote.OutboundLeg.CarrierIds[0];
@@ -26,6 +35,7 @@ function Airports($http, API_URL) {
 
         if(carrier) quote.CarrierName = carrier.Name;
       });
+      console.log(response.data.Quotes);
       return response.data.Quotes;
     });
   }

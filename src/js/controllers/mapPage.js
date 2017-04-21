@@ -4,7 +4,7 @@ angular
   .controller('ProbabilitiesIndexCtrl', ProbabilitiesIndexCtrl);
 
 
-MapPageCtrl.$inject = ['Trip', '$stateParams', '$state', '$scope', '$auth', 'airports', 'auroras'];
+MapPageCtrl.$inject = ['Trip',  '$stateParams', '$state', '$scope', '$auth', 'airports', 'auroras'];
 function MapPageCtrl(Trip, $stateParams, $state, $scope, $auth, airports, auroras) {
   const vm = this;
   vm.trip = {};
@@ -16,7 +16,7 @@ function MapPageCtrl(Trip, $stateParams, $state, $scope, $auth, airports, aurora
   // User.get({ id: userId }, (user) => {
   //   vm.user = user;
   // });
-
+  //
   vm.trip = Trip.get($stateParams);
 
 
@@ -27,10 +27,12 @@ function MapPageCtrl(Trip, $stateParams, $state, $scope, $auth, airports, aurora
     console.log('chosenLatLng', vm.chosenLatLng);
     $scope.$apply();
 
-    getAirports(lat, lng);
+
+    getAirports(vm.trip.origin_lat, vm.trip.origin_lng, lat, lng);
 
     function getAirports() {
-      airports.getAirports(lat, lng)
+      console.log('controller', vm.trip.origin_lat);
+      airports.getAirports(vm.trip.origin_lat, vm.trip.origin_lng,lat, lng)
       .then((quotes) => {
         console.log(quotes);
         vm.flights = quotes;

@@ -11,6 +11,12 @@
         <div class="col-md-3"
         <a ui-sref="tripsShow({ id: trip.id })"><h2>{{ flight.DestinationCity }}</h2></a>
         </div>
+        <div class="col-md-2">
+          <p>{{ flight.DestinationAirport}}</p>
+        </div>
+        <div class="col-md-2">
+          <p>{{ flight.OriginAirport}}</p>
+        </div>
       <div class="col-md-2">
         <p>£{{ flight.MinPrice}}</p>
       </div>

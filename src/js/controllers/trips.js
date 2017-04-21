@@ -37,20 +37,19 @@ function TripsNewCtrl(Trip, $state ) {
 TripsShowCtrl.$inject = ['Trip', '$stateParams', '$state', '$uibModal'];
 function TripsShowCtrl(Trip, $stateParams, $state, $uibModal) {
   const vm = this;
+  vm.trip = Trip.get($stateParams);
 
-      vm.trip = Trip.get($stateParams);
-
-    //   function openModal(){
-    //     $uibModal.open({
-    //       templateUrl: 'js/views/partials/tripsDelete.html',
-    //       controller: 'TripsDeleteCtrl as tripsDelete',
-    //       resolve: {
-    //         currentTrips: () => {
-    //           return vm.trip;
-    //         }
-    //       }
-    //     });
-    // }
+  function openModal(){
+    $uibModal.open({
+      templateUrl: 'js/views/partials/tripsDelete.html',
+      controller: 'TripsDeleteCtrl as tripsDelete',
+      resolve: {
+        currentTrips: () => {
+          return vm.trip;
+        }
+      }
+    });
+  }
   vm.open = openModal;
 }
 
