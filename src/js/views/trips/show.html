@@ -1,9 +1,19 @@
-<img ng-src="{{ tripsShow.trip.image }}">
+<div id="showPage">
+<div class="left">
+  <show-page-map class="showpage" center="{lat: 51.5098657, lng: -0.118092}" trip="tripsShow.trip" ng-if="tripsShow.trip.$resolved"></show-page-map>
+</div>
 
+<div class="right">
 <h2>{{ tripsShow.trip.name }}</h2>
 <p><strong>{{ tripsShow.trip.date }}</strong>
-<em>{{ tripsShow.trip.origin }}</em></p>
-<em>{{ tripsShow.trip.destination_aiport }}</em></p>
+<p><strong>{{ tripsShow.trip.destination_name }}</strong>
+<p>{{ tripsShow.trip.origin_airport }}</p>
+<p>{{ tripsShow.trip.destination_airport }}</p>
+<p>{{ tripsShow.trip.airline }}</p>
 
+
+{{tripsShow.trip}}
 <a ui-sref="tripsEdit({ id: tripsShow.trip.id })">Edit</a>
 <button ng-click="tripsShow.delete()" class="btn btn-danger">Delete</button>
+<div>
+</div>

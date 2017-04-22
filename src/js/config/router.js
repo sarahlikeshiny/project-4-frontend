@@ -11,12 +11,6 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       url: '/',
       templateUrl: 'js/views/home.html'
     })
-
-    // .state('tripsIndex', {
-    //   url: '/alltrips',
-    //   templateUrl: 'js/views/trips/index.html',
-    //   controller: 'TripsIndexCtrl as tripsIndex'
-    // })
     .state('tripsNew', {//new date form page
       url: '/trip/new',
       templateUrl: 'js/views/trips/new.html',
@@ -34,41 +28,17 @@ function Router($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl: 'js/views/trips/show.html',
       controller: 'TripsShowCtrl as tripsShow'
     })
-    .state('tripsDestination', {
-      url: '/auroras/:id',
-      templateUrl: 'js/views/trips/destination.html',
-      controller: 'MapPageCtrl as mapPage'
-    })
     .state('tripsIndex', {
       url: '/alltrips',
       templateUrl: 'js/views/trips/index.html',
       controller: 'TripsIndexCtrl as tripsIndex'
     })
 
-    //
-    // .state('cinemas', {
-    //   url: '/date/:id/addcinema',
-    //   templateUrl: 'js/views/googleMap.html',
-    //   controller: 'CinemaCtrl as cinemas'
-    // })
-    //
-    // .state('restaurants', {
-    //   url: '/date/:id/findrestaurant',
-    //   templateUrl: 'js/views/restaurantMap.html',
-    //   controller: 'RestaurantCtrl as restaurants'
-    // })
-
     .state('usersShow', {
       url: '/users/:id',
       templateUrl: 'js/views/users/show.html',
       controller: 'UsersShowCtrl as usersShow'
     })
-
-    // .state('testing', {
-    //   url: '/testing',
-    //   templateUrl: 'js/views/testing.html',
-    //   controller: 'AirportsIndexCtrl as airports'
-    // })
 
     .state('login', {
       url: '/login',

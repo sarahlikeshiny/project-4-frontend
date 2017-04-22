@@ -1,22 +1,44 @@
-<h1>edit</h1>
-
-
 
 {{tripsEdit.trip}}
-{{probabilitiesIndexCtrl.all}}
+<div class="editPage">
 <div ng-controller= "ProbabilitiesIndexCtrl  as probabilities">
   <google-map locations="probabilities.all" lat="tripsEdit.trip.destination_lat" lng="tripsEdit.trip.destination_lng" aurora="tripsEdit.aurora" center="{lat: 51.5098657, lng: -0.118092}" ng-if="probabilities.all.$resolved" get-lat-lng="tripsEdit.getLatLng(lat, lng)"></google-map>
 </div>
+<p>Circles represent the probability of seeing an Aurora, based on satellite and weather data, click to see more information and to see flight details</p>
 
-
-  <button class="btn" ng-click="tripsEdit.update()">Choose this location</button>
-
-  <ul ng-click="tripsEdit.addFlightToRecord(DestinationCity, DestinationAirport,OriginAirport, MinPrice, CarrierName, lat, lng)" ng-class="{ 'selected': tripsEdit.trip.destination_airport === flight.DestinationAiport && tripsEdit.trip.origin_airport === flight.OriginAirport && tripsEdit.trip.destination_name === flight.DestinationCity && tripsEdit.trip.price === flight.MinPrice && tripsEdit.trip.airline === flight.CarrierName  }">
-    <li ng-repeat="flight in tripsEdit.flights">
-      <div class="row">
-        <div class="col-md-3"
-        <a ui-sref="tripsEdit({ id: trip.id })"><h2>{{ flight.DestinationCity }}</h2></a>
+<button class="btn" ng-click="tripsEdit.update()">Choose this location</button>
+<div class="flightsBoard">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Flights to </h2>
+        <div class="row">
+        <div class="col-md-2">
+          <h3>City</h3>
         </div>
+        <div class="col-md-2">
+          <h3>Country</h3>
+        </div>
+        <div class="col-md-2">
+          <h3>Departure Airport</h3>
+        </div>
+        <div class="col-md-2">
+          <h3>Price</h3>
+        </div>
+        <div class="col-md-2">
+          <h3>Airline</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <ul>
+    <li ng-repeat="flight in tripsEdit.flights" ng-class="{ 'selected': tripsEdit.selectedFlight === flight.QuoteId }">
+      <div class="row">
+        <div class="col-md-2">
+        <h2 id="flightSelector" ng-click="tripsEdit.addFlight(flight)">{{ flight.DestinationCity }}</h2>
+        </div>
+    <div class="row">
         <div class="col-md-2">
           <p>{{ flight.DestinationAirport}}</p>
         </div>
@@ -26,14 +48,15 @@
       <div class="col-md-2">
         <p>£{{ flight.MinPrice}}</p>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-2">
         <p>{{ flight.CarrierName}}</p>
       </div>
+    </div>
     </li>
   </ul>
+</div>
 
-
-<form ng-submit="tripsEdit.update()">
+<!-- <form ng-submit="tripsEdit.update()">
   <div>
     <label for="name">Name</label>
     <input type="text" name="name" id="name" ng-model="tripsEdit.trip.name">
@@ -49,4 +72,4 @@
 
 
   <button>Update</button>
-</form>
+</form> -->

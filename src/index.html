@@ -11,8 +11,11 @@
   <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOk52BZUsfmPLLWjrXH-wu3IEOqjuk7nA&libraries=places,visualization">
   </script>
+  <link href="https://fonts.googleapis.com/css?family=Karla:400,400i,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
   </head>
-  <body>
+<body>
+  <header>
     <ul class="nav navbar-nav">
        <li><a ui-sref="home" ui-sref-active="active">home</a></li>
        <li ng-if="main.isAuthenticated()"><a ui-sref="tripsNew" ui-sref-active="active">Plan a Trip</a></li>
@@ -21,8 +24,9 @@
        <li ng-if="main.isAuthenticated()"><a ui-sref="usersShow({ id: main.currentUserId })" ui-sref-active="active">profile</a></li>
        <li ng-if="main.isAuthenticated()"><a ng-click="main.logout()" href="#" ui-sref-active="active">logout</a></li>
      </ul>
+  </header>
 
-  <main ui-view></main>
+      <main ui-view></main>
   </body>
 
 

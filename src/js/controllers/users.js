@@ -14,18 +14,17 @@ function UsersIndexCtrl(User) {
 UsersShowCtrl.$inject = ['User', 'Trip', '$stateParams', '$state'];
 function UsersShowCtrl(User, Trip, $stateParams, $state) {
   const vm = this;
-  vm.userDates = [];
+  vm.userTrips = [];
 
   vm.user = User.get($stateParams, (user) => {
     vm.user = user;
-    vm.userDates = Trip.query({ createdBy: user.id });
-    console.log(vm.userDates);
+    vm.userTrips = Trip.query({ createdBy: user.id });
   });
 
   function usersDelete() {
     vm.user
       .$remove()
-      .then(() => $state.go('tripsIndex'));
+      .then(() => $state.go('tripsNew'));
   }
 
   vm.delete = usersDelete;

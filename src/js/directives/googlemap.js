@@ -167,12 +167,12 @@ function googleMap($window) {
           position: circle.center
         });
 
-        map.setCenter(circle.center);
-        map.panTo(circle.center);
-
-      setTimeout(() =>{
-        infoWindow.open(map, circle);
-      }, 500);
+      //   map.setCenter(circle.center);
+      //   map.panTo(circle.center);
+      //
+      // setTimeout(() =>{
+      //   infoWindow.open(map, circle);
+      // }, 500);
     }
   }
   };

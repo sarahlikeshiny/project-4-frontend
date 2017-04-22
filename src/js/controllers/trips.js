@@ -25,7 +25,7 @@ function TripsNewCtrl(Trip, $state ) {
     Trip
       .save({ trip: vm.trip })
       .$promise
-      .then(() => $state.go('tripsDestination'));
+      .then(() => $state.go('tripsEdit'));
   }
 
 
@@ -36,6 +36,7 @@ TripsShowCtrl.$inject = ['Trip', '$stateParams', '$state'];
 function TripsShowCtrl(Trip, $stateParams, $state) {
   const vm = this;
   vm.trip = Trip.get($stateParams);
+
 
   function tripsDelete() {
     vm.trip
@@ -56,6 +57,7 @@ function TripsEditCtrl(Trip, $stateParams, $state, $scope, $auth, airports, auro
 
   vm.trip = Trip.get($stateParams);
 
+
   function tripsUpdate() {
 
     Trip.update({ id: vm.trip.id, trip: vm.trip })
@@ -66,20 +68,19 @@ function TripsEditCtrl(Trip, $stateParams, $state, $scope, $auth, airports, auro
   vm.update = tripsUpdate;
 
   function getLatLng(lat, lng) {
-    console.log('inside here');
-    console.log(lat, lng);
+    // console.log('inside here');
+    // console.log(lat, lng);
     vm.chosenLatLng = { lat, lng };
-    console.log('chosenLatLng', vm.chosenLatLng);
+    // console.log('chosenLatLng', vm.chosenLatLng);
     $scope.$apply();
 
 
     getAirports(vm.trip.origin_lat, vm.trip.origin_lng, lat, lng);
 
     function getAirports() {
-      console.log('controller', vm.trip.origin_lat);
       airports.getAirports(vm.trip.origin_lat, vm.trip.origin_lng,lat, lng)
       .then((quotes) => {
-        console.log(quotes);
+        // console.log(quotes);
         vm.flights = quotes;
         // console.log('vm.flights', vm.flights);
       });
@@ -90,24 +91,27 @@ function TripsEditCtrl(Trip, $stateParams, $state, $scope, $auth, airports, auro
     function getAuroras() {
       auroras.getAuroras(lat, lng)
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           vm.aurora = data;
         });
     }
-
-  function addFlightToRecord(DestinationCity, DestinationAirport, OriginAirport, MinPrice, CarrierName, lat, lng) {
-    vm.trip.destination_name = DestinationCity;
-    vm.trip.destination_airport = DestinationAirport;
-    vm.trip.origin_airport = OriginAirport;
-    vm.trip.price = MinPrice;
-    vm.trip.airline = CarrierName;
-    vm.trip.destination_lat = lat;
-    vm.trip.destination_lng =lng;
-  }
-
-  vm.addFlightToRecord = addFlightToRecord;
-
   }
 
   vm.getLatLng = getLatLng;
+
+  function addFlight(flight) {
+    console.log(flight);
+    vm.selectedFlight = flight.QuoteId;
+    vm.trip.destination_name = flight.DestinationCity;
+    vm.trip.destination_airport = flight.DestinationAirport;
+    vm.trip.origin_airport = flight.OriginAirport;
+    vm.trip.price = flight.MinPrice;
+    vm.trip.airline = flight.CarrierName;
+    vm.trip.destination_lat = vm.chosenLatLng.lat;
+    vm.trip.destination_lng = vm.chosenLatLng.lng;
+  }
+
+  vm.addFlight = addFlight;
+
+
 }

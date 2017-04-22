@@ -1,30 +1,45 @@
-<div class="container">
-  <div class="left"></div>
-  <div class="row">
-    <h2 class="text-center">login</h2>
-      <h3>don't have an account? <a class="register" ui-sref="register">register</a></h3>
-      <div class="col-md-8 col-md-offset-2">
-         <form name="login.loginForm" ng-submit="login.submit()" novalidate>
-           <div class="loginForm">
-           <div class="form-group">
-             <input type="text" class="form-control" required name="email" id="email" ng-model="login.credentials.email" placeholder="email" ng-pattern="/@/">
-             <div ng-messages="login.loginForm.email.$error" ng-show="login.loginForm.$submitted || login.loginForm.email.$touched" role="alert">
-               <div ng-message="required">Your email address is required.</div>
-               <div ng-message="pattern">Please enter a valid email address.</div>
-             </div>
-           </div>
-           <div class="form-group">
-             <input type="password" class="form-control" placeholder="password" required name="password" id="password" ng-model="login.credentials.password">
-             <div ng-messages="login.loginForm.password.$error" ng-show="login.loginForm.$submitted || login.loginForm.password.$touched" role="alert">
-               <div ng-message="required">Your password is required.</div>
-             </div>
-           </div>
-           <div class="logBtns">
-           <button class="loginbutton" ng-disabled="login.loginForm.$invalid">Login</button>
-           <button type="button" class="btn btn-primary" ng-click="login.authenticate('facebook')"><i class="fa fa-facebook"></i>  Login with Facebook</button>
-          </div>
-            </div>
-         </form>
-       </div>
-   </div>
+<body ng-controller="LoginCtrl as login">
+  <h1>Register</h1>
+  <form ng-submit="login.register()">
+<div>
+  <label>Username</label>
+  <input type="text" ng-model="login.user.username">
 </div>
+
+<div>
+  <label>Email</label>
+  <input type="text" ng-model="login.user.email">
+</div>
+
+<div>
+  <label>Password</label>
+  <input type="password" ng-model="login.user.password">
+</div>
+
+<div>
+  <label>Password Confirmation</label>
+  <input type="password" ng-model="login.user.password_confirmation">
+</div>
+
+<button>Register</button>
+
+</form>
+
+<h1>Login</h1>
+<form ng-submit="login.login()">
+  <div>
+    <label>Email</label>
+    <input type="text" ng-model="login.credentials.email">
+  </div>
+
+  <div>
+    <label>Password</label>
+    <input type="password" ng-model="login.credentials.password">
+  </div>
+
+  <button>Login</button>
+
+</form>
+
+
+</body>
