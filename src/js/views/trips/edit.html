@@ -1,12 +1,13 @@
 
-{{tripsEdit.trip}}
 <div class="editPage">
 <div ng-controller= "ProbabilitiesIndexCtrl  as probabilities">
-  <google-map locations="probabilities.all" lat="tripsEdit.trip.destination_lat" lng="tripsEdit.trip.destination_lng" aurora="tripsEdit.aurora" center="{lat: 51.5098657, lng: -0.118092}" ng-if="probabilities.all.$resolved" get-lat-lng="tripsEdit.getLatLng(lat, lng)"></google-map>
+  <google-map locations="probabilities.all" lat="tripsEdit.trip.destination_lat" lng="tripsEdit.trip.destination_lng" aurora="tripsEdit.aurora" center="{lat: 54.7636873, lng: 0.09233982}" ng-if="probabilities.all.$resolved" get-lat-lng="tripsEdit.getLatLng(lat, lng)"></google-map>
 </div>
-<p>Circles represent the probability of seeing an Aurora, based on satellite and weather data, click to see more information and to see flight details</p>
+<p>Circles represent the probability of seeing an Aurora, based on satellite and weather data, click to see more information and to see flights to this location</p>
 
-<button class="btn" ng-click="tripsEdit.update()">Choose this location</button>
+<a class="generalbutton" ng-click="tripsEdit.update()">Choose this location</a>
+<h2 ng-if="class === 'selected'">{{flight.DestinationCity}}</h2>
+
 <div class="flightsBoard">
   <div class="row">
     <div class="col-md-12">
@@ -31,7 +32,6 @@
     </div>
   </div>
 </div>
-
   <ul>
     <li ng-repeat="flight in tripsEdit.flights" ng-class="{ 'selected': tripsEdit.selectedFlight === flight.QuoteId }">
       <div class="row">

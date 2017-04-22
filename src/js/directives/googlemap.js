@@ -111,7 +111,6 @@ function googleMap($window) {
       const markers = [];
 
 
-
       function addLocations() {
         $scope.locations.forEach(function(location){
           // console.log(location)
@@ -155,26 +154,22 @@ function googleMap($window) {
         // console.log($scope.lat, $scope.lng);
         $scope.getLatLng({lat: $scope.lat, lng: $scope.lng});
 
-        const htmlElement = `<div id="iw-container">
-                                <h4 id="iw-title">${location.location.name}</h4>
-                                <a>more info in here!</a>
+
+        const htmlElement = `<div>
+                                <h4 id="iw-title">Location Name: ${location.location.name}</h4>
+                                <h4 id="iw-title">Probability: ${location.probability}%</h4>
+                                <a>more information</a>
                                 '<div class="iw-bottom-gradient"></div>
                                </div>`;
         if(infoWindow) infoWindow.close();
-
         infoWindow = new google.maps.InfoWindow({
           content: htmlElement,
           position: circle.center
         });
 
-      //   map.setCenter(circle.center);
-      //   map.panTo(circle.center);
-      //
-      // setTimeout(() =>{
-      //   infoWindow.open(map, circle);
-      // }, 500);
+        infoWindow.open(map, circle);
+      }
     }
-  }
   };
   return directive;
 }

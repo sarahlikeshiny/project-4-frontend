@@ -100,7 +100,7 @@ function TripsEditCtrl(Trip, $stateParams, $state, $scope, $auth, airports, auro
   vm.getLatLng = getLatLng;
 
   function addFlight(flight) {
-    console.log(flight);
+    // console.log(flight);
     vm.selectedFlight = flight.QuoteId;
     vm.trip.destination_name = flight.DestinationCity;
     vm.trip.destination_airport = flight.DestinationAirport;

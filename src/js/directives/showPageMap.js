@@ -16,7 +16,7 @@ function showPageMap($window) {
 
     link($scope, element) {
       const map = new $window.google.maps.Map(element[0], {
-        zoom: 3,
+        zoom: 2,
         center: $scope.center,
         scrollWheel: false
       });
@@ -26,9 +26,7 @@ function showPageMap($window) {
       console.log($scope.trip);
 
       const originLatLng = {lat: $scope.trip.origin_lat, lng: $scope.trip.origin_lng};
-      console.log(originLatLng);
       const destinationLatLng = {lat: $scope.trip.destination_lat, lng: $scope.trip.destination_lng};
-      console.log(destinationLatLng);
 
       const departure = new google.maps.LatLng(originLatLng);
       const arrival = new google.maps.LatLng(destinationLatLng);
@@ -38,7 +36,7 @@ function showPageMap($window) {
         path: [departure, departure],
         strokeColor: '#FF0000',
         strokeOpacity: 1,
-        strokeWeight: 1,
+        strokeWeight: 4,
         geodesic: true, //set to false if you want straight line instead of arc
         map: map
       });

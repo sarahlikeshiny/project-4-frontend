@@ -4,16 +4,17 @@
 </div>
 
 <div class="right">
-<h2>{{ tripsShow.trip.name }}</h2>
-<p><strong>{{ tripsShow.trip.date }}</strong>
-<p><strong>{{ tripsShow.trip.destination_name }}</strong>
-<p>{{ tripsShow.trip.origin_airport }}</p>
-<p>{{ tripsShow.trip.destination_airport }}</p>
-<p>{{ tripsShow.trip.airline }}</p>
-
-
-{{tripsShow.trip}}
-<a ui-sref="tripsEdit({ id: tripsShow.trip.id })">Edit</a>
-<button ng-click="tripsShow.delete()" class="btn btn-danger">Delete</button>
-<div>
+  <div class="row">
+    <div class="col-md-12 details">
+      <h2>{{ tripsShow.trip.name }}</h2>
+      <h3><strong>{{ tripsShow.trip.date }}</strong>
+      <h3><strong>To: {{ tripsShow.trip.destination_name }}</strong>
+      <h3>Starting from: {{ tripsShow.trip.origin_airport }}</h3>
+      <h3>Landing at: {{ tripsShow.trip.destination_airport }}</h3>
+      <h3>Flying with; {{ tripsShow.trip.airline }}</h3>
+      <h3>Price £{{ tripsShow.trip.price }}</h3>
+      <a class="generalbutton" ui-sref="tripsEdit({ id: tripsShow.trip.id })">Edit</a>
+      <a ng-click="tripsShow.delete()" class="generalbutton">Delete</a>
+    </div>
+  </div>
 </div>

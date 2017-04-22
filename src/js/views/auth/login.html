@@ -1,32 +1,6 @@
-<body ng-controller="LoginCtrl as login">
-  <h1>Register</h1>
-  <form ng-submit="login.register()">
-<div>
-  <label>Username</label>
-  <input type="text" ng-model="login.user.username">
-</div>
-
-<div>
-  <label>Email</label>
-  <input type="text" ng-model="login.user.email">
-</div>
-
-<div>
-  <label>Password</label>
-  <input type="password" ng-model="login.user.password">
-</div>
-
-<div>
-  <label>Password Confirmation</label>
-  <input type="password" ng-model="login.user.password_confirmation">
-</div>
-
-<button>Register</button>
-
-</form>
 
 <h1>Login</h1>
-<form ng-submit="login.login()">
+<form ng-submit="login.submit()">
   <div>
     <label>Email</label>
     <input type="text" ng-model="login.credentials.email">

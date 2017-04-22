@@ -12,7 +12,7 @@ function Airports($http, API_URL) {
     return $http
     .get(`${API_URL}/airports`, { params: { origin_lat, origin_lng, lat, lng} })
     .then((response) => {
-      console.log('flights',response);
+      // console.log('flights',response);
       response.data.Quotes.forEach((quote) => {
         const destination = response.data.Places.find((place) => {
           return place.PlaceId === quote.OutboundLeg.DestinationId;
@@ -35,7 +35,7 @@ function Airports($http, API_URL) {
 
         if(carrier) quote.CarrierName = carrier.Name;
       });
-      console.log(response.data.Quotes);
+      // console.log(response.data.Quotes);
       return response.data.Quotes;
     });
   }

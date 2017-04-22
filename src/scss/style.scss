@@ -2,6 +2,9 @@
 
 
 // Extends
+$hover: #B96AC4;
+$text: #4F7891;
+$button: #3CB7A8;
 
 .centered-styles {
   position: absolute;
@@ -22,7 +25,19 @@
     outline: none !important;
   }
 }
-
+.generalbutton {
+    background: none;
+    color: #3CB7A8;
+    padding: 5px 20px;
+    margin-top: 10%;
+    font-size: 25px;
+    font-weight: bold;
+    &:hover {
+      background: none;
+      color: $hover;
+      animation: pulse 1s infinite;
+    }
+}
 
 
 // Global styles
@@ -31,13 +46,14 @@
   box-sizing: border-box;
 }
 
-body, input, button {
+body, input, button, a {
   font-family: 'Karla', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6, p {
   margin-top: 0;
   margin-bottom: 10px;
+  color: $text;
 }
 
 ul, li {
@@ -52,21 +68,11 @@ header {
   background-color: #333;
   overflow: hidden;
   height: 40px;
-  color: white;
   ul {
     list-style: none;
     margin-top: 0;
-    li {
-      float: left;
-      line-height: 40px;
-      &:first-child {
-        font-family: 'Space Mono', monospace;
-        letter-spacing: 2px;
-      }
-      &:not(:last-child) {
-        margin-right: 20px;
-      }
-      a {
+      .aNav {
+        float: right;
         text-decoration: none;
         color: white;
         &:hover, &:focus {
@@ -76,7 +82,7 @@ header {
       }
     }
   }
-}
+
 
 
 
@@ -95,47 +101,42 @@ header {
    left: 0 !important;
    border-radius: 2px 2px 0 0;
 }
-.selected {
-  background-color: lemonchiffon;
-  p {
-    color: black;
-    padding: 0 4px;
-  }
-  h2 {
-    color: black;
-    padding: 0 4px;
 
-  }
-}
 
 .flightsBoard {
-  font-family: 'Space Mono', monospace;
   text-transform: uppercase;
   padding: 20px;
   letter-spacing: 2px;
   margin-bottom: 10px;
-
   h2 {
-    color: grey;
     text-align: center;
     margin-bottom: 20px;
   }
   h3 {
-    color: grey;
-    font-size: 14px;
     text-align: center;
   }
   p {
-    color: grey;
-    // background-color: #191818;
     padding: 0 4px;
+
+  }
+  .selected {
+    background-color: $hover;
+    p {
+      color: black;
+      padding: 0 4px;
+    }
+    h2 {
+      color: black;
+      padding: 0 4px;
+    }
   }
 }
 #flightSelector {
-  color: grey;
+  color: $button;
   text-align: center;
   &:hover {
     text-decoration: underline;
+    color: $hover;
   }
 }
 
@@ -146,17 +147,22 @@ header {
     right: 0;
     float: right;
     margin: 8% -5% 5% 0;
+      .details {
+        h2 {
+          text-decoration: underline;
+        }
+      }
   }
   .left {
     width: 50%;
     position: fixed;
     .showpage {
-      height: 600px;
+      height: 100vh;
       border-left: 20px;
       display: inline-block;
       border:1px solid grey;
     }
-  }
+}
 }
 
 
@@ -206,13 +212,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1fffffff', e
 .base{
   position:relative;
   width: 500px;
-  height:250px;
-border-radius:0 0 500px 500px;
-
-background:#26152D;
-
-
-  margin:-250px auto;}
+  height: 250px;
+  border-radius:0 0 500px 500px;
+  background:#26152D;
+  margin:-250px auto;
+}
 .luna{
   position:absolute;
    width:112px;
@@ -223,7 +227,7 @@ background:#26152D;
   box-shadow:0 0 90px #FFf;
 -moz-box-shadow:0 0 90px #FFf;
 -ms-box-shadow:0 0 90px #FFf;
--o-box-shadow:0 0 90px #FFf;
+-ms-o-box-shadow:0 0 90px #FFf;
 -webkit-box-shadow:0 0 90px #FFf;
 
 }
@@ -310,7 +314,7 @@ ul.mont{
   position:relative;
   width:450px;
   height:172px;
-  margin:-340px -5px;
+  margin:-340px -0px;
   list-style:none;
 }
 ul.mont li{
@@ -361,7 +365,7 @@ ul.hills{
   position:relative;
   width:450px;
   height:172px;
-  margin:-231px -40px;
+  margin:-231px -5px;
   list-style:none;
 }
 ul.hills li{
@@ -412,7 +416,7 @@ ul.arboles{
   position:relative;
   width:512px;
   height:172px;
-  margin:353px -50px;
+  margin:353px -30px;
   list-style:none;
 }
 ul.arboles li{
