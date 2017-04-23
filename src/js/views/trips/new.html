@@ -8,11 +8,9 @@
     <input type="date" name="date" id="date" ng-model="tripsNew.trip.date">
   </div>
   <div>
-    <input type="text" class="form-control" autocomplete originlat="tripsNew.trip.origin_lat" originlng= "tripsNew.trip.origin_lng" ng-model="tripsNew.trip.origin_airport" required name="dateAddress" id="dateAddress" placeholder = "enter your starting location" get-origin-lat-lng="mapsPage.getLatLng(originlat, originlng)">
+    <input type="text" class="form-control" autocomplete originlat="tripsNew.trip.origin_lat" originlng= "tripsNew.trip.origin_lng" ng-model="tripsNew.trip.origin_airport" placeholder = "enter your starting location" get-origin-lat-lng="mapsPage.getLatLng(originlat, originlng)">
     </div>
   <div>
-    {{tripsNew.trip.origin_lat}}
-    {{tripsNew.trip.origin_lng}}
   </div>
 
 

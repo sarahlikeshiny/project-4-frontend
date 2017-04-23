@@ -9,20 +9,34 @@ function RegisterCtrl($auth, $state) {
   vm.user= {};
 
   function submit() {
-    $auth.signup(vm.user)
-    .then(() => $state.go('login'));
+    if (vm.registerForm.$valid) {
+      $auth.signup(vm.user)
+        .then(() => $state.go('login'));
+    }
   }
+
   vm.submit = submit;
 }
 
-LoginCtrl.$inject = ['$auth', '$state'];
-function LoginCtrl($auth, $state) {
+LoginCtrl.$inject = ['$auth', '$state', '$rootScope'];
+function LoginCtrl($auth, $state, $rootScope) {
   const vm = this;
-  vm.credentials= {};
+  vm.credentials = {};
+
 
   function submit() {
-    $auth.login(vm.credentials)
-    .then(() => $state.go('usersShow'));
+    if (vm.loginForm.$valid) {
+      $auth.login(vm.credentials)
+        .then((res) => {
+          console.log(vm.credentials);
+         // console.log('response', res);
+          const currentUserId = $auth.getPayload().userId;
+         console.log('userId', currentUserId);
+          $rootScope.$broadcast('loggedIn', res.data.user);
+          console.log('user', res.data.user);
+          $state.go('usersShow', { id: currentUserId });
+        });
+    }
   }
 
   vm.submit = submit;

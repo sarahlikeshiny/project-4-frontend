@@ -25,7 +25,7 @@ function TripsNewCtrl(Trip, $state ) {
     Trip
       .save({ trip: vm.trip })
       .$promise
-      .then(() => $state.go('tripsEdit'));
+      .then(() => $state.go('tripsShow'));
   }
 
 
@@ -41,7 +41,7 @@ function TripsShowCtrl(Trip, $stateParams, $state) {
   function tripsDelete() {
     vm.trip
       .$remove()
-      .then(() => $state.go('alltrips'));
+      .then(() => $state.go('tripsNew'));
   }
 
   vm.delete = tripsDelete;
@@ -56,7 +56,7 @@ function TripsEditCtrl(Trip, $stateParams, $state, $scope, $auth, airports, auro
   vm.aurora = [];
 
   vm.trip = Trip.get($stateParams);
-
+  console.log($stateParams);
 
   function tripsUpdate() {
 
