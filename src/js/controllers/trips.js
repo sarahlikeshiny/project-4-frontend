@@ -53,6 +53,7 @@ TripsEditCtrl.$inject = ['Trip', '$stateParams', '$state', '$scope', '$auth', 'a
 function TripsEditCtrl(Trip, $stateParams, $state, $scope, $auth, airports, auroras ) {
   const vm = this;
   vm.flights = [];
+  vm.weather =[];
   vm.aurora = [];
 
   vm.trip = Trip.get($stateParams);
@@ -91,7 +92,8 @@ function TripsEditCtrl(Trip, $stateParams, $state, $scope, $auth, airports, auro
     function getAuroras() {
       auroras.getAuroras(lat, lng)
         .then((data) => {
-          // console.log(data);
+          vm.weather = data.weather;
+          console.log(data.weather);
           vm.aurora = data;
         });
     }

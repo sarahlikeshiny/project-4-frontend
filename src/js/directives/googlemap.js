@@ -12,9 +12,10 @@ function googleMap($window) {
     scope: {
       center: '=',
       locations: '=',
+      selected: '=',
       lat: '=',
       lng: '=',
-      aurora: '=',
+      weather: '=',
       getLatLng: '&'
     },
 
@@ -23,93 +24,202 @@ function googleMap($window) {
         zoom: 2,
         center: $scope.center,
         scrollWheel: false,
-        styles: [
-            {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
-            {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
-            {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
-          {
-            featureType: 'administrative.locality',
-            elementType: 'labels.text.fill',
-            stylers: [{color: '#d59563'}]
-          },
-          {
-            featureType: 'poi',
-            elementType: 'labels.text.fill',
-            stylers: [{color: '#d59563'}]
-          },
-          {
-            featureType: 'poi.park',
-            elementType: 'geometry',
-            stylers: [{color: '#263c3f'}]
-          },
-          {
-            featureType: 'poi.park',
-            elementType: 'labels.text.fill',
-            stylers: [{color: '#6b9a76'}]
-          },
-          {
-            featureType: 'road',
-            elementType: 'geometry',
-            stylers: [{color: '#38414e'}]
-          },
-          {
-            featureType: 'road',
-            elementType: 'geometry.stroke',
-            stylers: [{color: '#212a37'}]
-          },
-          {
-            featureType: 'road',
-            elementType: 'labels.text.fill',
-            stylers: [{color: '#9ca5b3'}]
-          },
-          {
-            featureType: 'road.highway',
-            elementType: 'geometry',
-            stylers: [{color: '#746855'}]
-          },
-          {
-            featureType: 'road.highway',
-            elementType: 'geometry.stroke',
-            stylers: [{color: '#1f2835'}]
-          },
-          {
-            featureType: 'road.highway',
-            elementType: 'labels.text.fill',
-            stylers: [{color: '#f3d19c'}]
-          },
-          {
-            featureType: 'transit',
-            elementType: 'geometry',
-            stylers: [{color: '#2f3948'}]
-          },
-          {
-            featureType: 'transit.station',
-            elementType: 'labels.text.fill',
-            stylers: [{color: '#d59563'}]
-          },
-          {
-            featureType: 'water',
-            elementType: 'geometry',
-            stylers: [{color: '#17263c'}]
-          },
-          {
-            featureType: 'water',
-            elementType: 'labels.text.fill',
-            stylers: [{color: '#515c6d'}]
-          },
-          {
-            featureType: 'water',
-            elementType: 'labels.text.stroke',
-            stylers: [{color: '#17263c'}]
-          }
-        ]
-
+        styles:
+        [
+        {
+            "featureType": "administrative",
+            "elementType": "all",
+            "stylers": [
+                {
+                    "hue": "#000000"
+                },
+                {
+                    "lightness": -100
+                },
+                {
+                    "visibility": "off"
+                }
+            ]
+        },
+        {
+            "featureType": "landscape",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                    "hue": "#dddddd"
+                },
+                {
+                    "saturation": -100
+                },
+                {
+                    "lightness": -3
+                },
+                {
+                    "visibility": "on"
+                }
+            ]
+        },
+        {
+            "featureType": "landscape",
+            "elementType": "labels",
+            "stylers": [
+                {
+                    "hue": "#000000"
+                },
+                {
+                    "saturation": -100
+                },
+                {
+                    "lightness": -100
+                },
+                {
+                    "visibility": "off"
+                }
+            ]
+        },
+        {
+            "featureType": "poi",
+            "elementType": "all",
+            "stylers": [
+                {
+                    "hue": "#000000"
+                },
+                {
+                    "saturation": -100
+                },
+                {
+                    "lightness": -100
+                },
+                {
+                    "visibility": "off"
+                }
+            ]
+        },
+        {
+            "featureType": "road",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                    "hue": "#bbbbbb"
+                },
+                {
+                    "saturation": -100
+                },
+                {
+                    "lightness": 26
+                },
+                {
+                    "visibility": "on"
+                }
+            ]
+        },
+        {
+            "featureType": "road",
+            "elementType": "labels",
+            "stylers": [
+                {
+                    "hue": "#ffffff"
+                },
+                {
+                    "saturation": -100
+                },
+                {
+                    "lightness": 100
+                },
+                {
+                    "visibility": "off"
+                }
+            ]
+        },
+        {
+            "featureType": "road.local",
+            "elementType": "all",
+            "stylers": [
+                {
+                    "hue": "#ffffff"
+                },
+                {
+                    "saturation": -100
+                },
+                {
+                    "lightness": 100
+                },
+                {
+                    "visibility": "on"
+                }
+            ]
+        },
+        {
+            "featureType": "transit",
+            "elementType": "labels",
+            "stylers": [
+                {
+                    "hue": "#000000"
+                },
+                {
+                    "lightness": -100
+                },
+                {
+                    "visibility": "off"
+                }
+            ]
+        },
+        {
+            "featureType": "water",
+            "elementType": "geometry",
+            "stylers": [
+                {
+                    "hue": "#ffffff"
+                },
+                {
+                    "saturation": -100
+                },
+                {
+                    "lightness": 100
+                },
+                {
+                    "visibility": "on"
+                }
+            ]
+        },
+        {
+            "featureType": "water",
+            "elementType": "geometry.fill",
+            "stylers": [
+                {
+                    "visibility": "on"
+                },
+                {
+                    "color": "#2a2a2a"
+                }
+            ]
+        },
+        {
+            "featureType": "water",
+            "elementType": "labels",
+            "stylers": [
+                {
+                    "hue": "#000000"
+                },
+                {
+                    "saturation": -100
+                },
+                {
+                    "lightness": -100
+                },
+                {
+                    "visibility": "off"
+                }
+            ]
+        }
+    ]
       });
       // console.log($scope.locations);
       // let infoWindow = null;
       let infoWindow = null;
       const markers = [];
 
+      console.log('scope', $scope.weather);
 
       function addLocations() {
         $scope.locations.forEach(function(location){
@@ -128,11 +238,11 @@ function googleMap($window) {
         const latLng = { lat: location.latitude, lng: location.longitude };
 
         var circle = new google.maps.Circle({
-          strokeColor: '#d4dbd9',
+          strokeColor: '#652a8e',
           strokeOpacity: 0.8,
           strokeWeight: 2,
           fillColor: '#42f4cb',
-          fillOpacity: 0.35,
+          fillOpacity: 0.5,
           map: map,
           center: latLng,
           radius: location.value * 10000
@@ -151,7 +261,7 @@ function googleMap($window) {
         $scope.lat = location.latitude;
         $scope.lng = location.longitude;
         $scope.selected = location;
-        // console.log($scope.lat, $scope.lng);
+        console.log('selected', $scope.selected);
         $scope.getLatLng({lat: $scope.lat, lng: $scope.lng});
 
 

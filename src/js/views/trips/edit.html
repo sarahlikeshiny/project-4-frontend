@@ -1,17 +1,30 @@
 
 <div class="editPage">
 <div ng-controller= "ProbabilitiesIndexCtrl  as probabilities">
-  <google-map locations="probabilities.all" lat="tripsEdit.trip.destination_lat" lng="tripsEdit.trip.destination_lng" aurora="tripsEdit.aurora" center="{lat: 54.7636873, lng: 0.09233982}" ng-if="probabilities.all.$resolved" get-lat-lng="tripsEdit.getLatLng(lat, lng)"></google-map>
+  <google-map locations="probabilities.all" lat="tripsEdit.trip.destination_lat" lng="tripsEdit.trip.destination_lng" weather="tripsEdit.weather" selected="tripsEdit.trip.selected" center="{lat: 54.7636873, lng: 0.09233982}" ng-if="probabilities.all.$resolved" get-lat-lng="tripsEdit.getLatLng(lat, lng)"></google-map>
 </div>
-<p>Circles represent the probability of seeing an Aurora, based on satellite and weather data, click to see more information and to see flights to this location</p>
+<p>Circles represent the probability of seeing the Aurora, based on satellite and weather data, click to see more information and to see flights to this location</p>
 
+<div class="row">
+  <h2 class="col-md-4">Current weather for: {{tripsEdit.trip.selected.location.name}}</h2>
+</div>
+<div class="row">
+  <p class="col-md-4">Cloud Cover %: {{tripsEdit.weather.cloud}}</p>
+  <p class="col-md-4">Temperature &deg;C: {{tripsEdit.weather.temperature}}</p>
+  <p class="col-md-4">Chance of rain %: {{tripsEdit.weather.rain}}</p>
+  <p class="col-md-4">Wind direction: {{tripsEdit.weather.wind.direction}}</p>
+  <p class="col-md-4"> Wind Speed mph: {{tripsEdit.weather.wind.speed}}</p>
+  <p class="col-md-4"> Moon Phase: {{tripsEdit.weather.moonphase }}</p>
+  <p class="col-md-4"> Moon Rise: {{tripsEdit.weather.moonrise | date :  "short"}}</p>
+  <p class="col-md-4"> Moon Set: {{tripsEdit.weather.moonset | date :  "short"}}</p>
+</div>
 <a class="generalbutton" ng-click="tripsEdit.update()">Choose this location</a>
 <h2 ng-if="class === 'selected'">{{flight.DestinationCity}}</h2>
 
 <div class="flightsBoard">
   <div class="row">
     <div class="col-md-12">
-      <h2>Flights to </h2>
+      <h2>Flights to {{tripsEdit.trip.selected.location.name}}</h2>
         <div class="row">
         <div class="col-md-2">
           <h3>City</h3>
