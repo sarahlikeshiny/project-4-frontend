@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <base href="/">
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon" />
     <title>Aurora Hunt</title>
     <!-- inject:js -->
     <!-- endinject -->
@@ -14,15 +15,15 @@
   <link href="https://fonts.googleapis.com/css?family=Karla:400,400i,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
   </head>
-<body>
+<body ng-controller= "MainCtrl as main">
   <header>
     <nav>
       <ul>
-        <li><a ui-sref="tripsIndex">Your Trips</a></li>
-        <li><a ui-sref="tripsNew">Make a new Trip</a></li>
-        <li ><a ng-click="main.logout()" href="#">Log Out</a></li>
+        <li><a ng-if="main.isAuthenticated()" ui-sref="tripsIndex">Your Trips</a></li>
+        <li><a ng-if="main.isAuthenticated()" ui-sref="tripsNew">Make a new Trip</a></li>
+        <li ><a ng-if="main.isAuthenticated()" ng-click="main.logout()" href="#">Log Out</a></li>
         <!-- fake a link using the href, ng-click doesn't show a link -->
-        <li ><a ui-sref="login">Login</a></li>
+        <li ><a ng-if="!main.isAuthenticated()" ui-sref="login">Login</a></li>
         <li><a ng-if="!main.isAuthenticated()" ui-sref="register">Register</a></li>
       </ul>
     </nav>

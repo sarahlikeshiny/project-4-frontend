@@ -13,18 +13,6 @@ $button: #3CB7A8;
   transform: translate(-50%, -50%);
 }
 
-.form-styles {
-  width: 100%;
-  font-size: 14px;
-  padding: 8px 10px;
-  border: 0;
-  border-radius: 4px;
-  // box-shadow: none;
-  background-color: white;
-  &:focus {
-    outline: none !important;
-  }
-}
 .generalbutton {
     background: none;
     color: #3CB7A8;
@@ -33,10 +21,14 @@ $button: #3CB7A8;
     font-size: 25px;
     font-weight: bold;
     border: none;
+    margin-left: 100px;
     &:hover {
       background: none;
       color: $hover;
       animation: bounce 1s;
+    &:focus {
+      outline:none;
+    }
     }
 }
 
@@ -245,15 +237,15 @@ nav {
   padding: 30px;
     input {
       margin-top: 20px;
-      &:focus {
-        outline: none;
+        &:focus {
+          outline:none;
       }
-    }
-  a {
-    color: $button;
-    &:hover {
-      text-decoration: none;
-      color: $hover;
+    a {
+      color: $button;
+      &:hover {
+        text-decoration: none;
+        color: $hover;
+      }
     }
   }
 }
@@ -306,10 +298,6 @@ nav {
       }
     }
   }
-
-//burger-------------------------------------------------
-
-
 
 //animations---------------------------------------------
 @keyframes bounce {

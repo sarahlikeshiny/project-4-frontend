@@ -1,21 +1,22 @@
 <div id="showPage">
-<div class="left">
-  <show-page-map class="showpage" center="{lat: 51.5287718, lng: -0.2417015}" trip="tripsShow.trip" ng-if="tripsShow.trip.$resolved"></show-page-map>
-</div>
+    <div class="left">
+      <show-page-map class="showpage" center="{lat: 51.5287718, lng: -0.2417015}" trip="tripsShow.trip" ng-if="tripsShow.trip.$resolved"></show-page-map>
+    </div>
 
 
-<div class="right">
-  <div class="row">
-    <div class="col-md-12 details">
-      <h2>{{ tripsShow.trip.name }}</h2>
-      <h3><strong>{{ tripsShow.trip.date }}</strong>
-      <h3><strong>To: {{ tripsShow.trip.destination_name }}</strong>
-      <h3>Starting from: {{ tripsShow.trip.origin_airport }}</h3>
-      <h3>Landing at: {{ tripsShow.trip.destination_airport }}</h3>
-      <h3>Flying with; {{ tripsShow.trip.airline }}</h3>
-      <h3>Price £{{ tripsShow.trip.price }}</h3>
-      <a class="generalbutton" ui-sref="tripsEdit({ id: tripsShow.trip.id })">Edit</a>
-      <a ng-click="tripsShow.delete()" class="generalbutton">Delete</a>
+  <div class="right">
+    <div class="row">
+      <div class="col-md-12 details">
+        <h2>{{ tripsShow.trip.name }}</h2>
+        <h3><strong>{{ tripsShow.trip.date }}</strong></h3>
+        <h3><strong>To: {{ tripsShow.trip.destination_name }}</strong></h3>
+        <h3>Starting from: {{ tripsShow.trip.origin_airport }}</h3>
+        <h3>Landing at: {{ tripsShow.trip.destination_airport }}</h3>
+        <h3>Flying with; {{ tripsShow.trip.airline }}</h3>
+        <h3>Price £{{ tripsShow.trip.price }}</h3>
+        <a class="generalbutton" ui-sref="tripsEdit({ id: tripsShow.trip.id })">Edit</a>
+        <a ng-click="tripsShow.delete()" class="generalbutton">Delete</a>
+      </div>
     </div>
   </div>
 </div>
