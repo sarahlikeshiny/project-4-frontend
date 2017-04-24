@@ -5,10 +5,11 @@
 </div>
 <p>Circles represent the probability of seeing the Aurora, based on satellite and weather data, click to see more information and to see flights to this location</p>
 
-<div class="row">
+<a class="generalbutton" ng-click="tripsEdit.update()">Choose this location and flight</a>
+<div class="row" id="weatherHeader">
   <h2 class="col-md-4">Current weather for: {{tripsEdit.trip.selected.location.name}}</h2>
 </div>
-<div class="row">
+<div class="row" id="weatherData">
   <p class="col-md-4">Cloud Cover %: {{tripsEdit.weather.cloud}}</p>
   <p class="col-md-4">Temperature &deg;C: {{tripsEdit.weather.temperature}}</p>
   <p class="col-md-4">Chance of rain %: {{tripsEdit.weather.rain}}</p>
@@ -18,9 +19,6 @@
   <p class="col-md-4"> Moon Rise: {{tripsEdit.weather.moonrise | date :  "short"}}</p>
   <p class="col-md-4"> Moon Set: {{tripsEdit.weather.moonset | date :  "short"}}</p>
 </div>
-<a class="generalbutton" ng-click="tripsEdit.update()">Choose this location</a>
-<h2 ng-if="class === 'selected'">{{flight.DestinationCity}}</h2>
-
 <div class="flightsBoard">
   <div class="row">
     <div class="col-md-12">
@@ -32,7 +30,7 @@
         <div class="col-md-2">
           <h3>Country</h3>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
           <h3>Departure Airport</h3>
         </div>
         <div class="col-md-2">

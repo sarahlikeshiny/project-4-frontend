@@ -23,7 +23,7 @@ function googleMap($window) {
       const map = new $window.google.maps.Map(element[0], {
         zoom: 2,
         center: $scope.center,
-        scrollWheel: false,
+        scrollwheel: false,
         styles:
         [
         {
@@ -219,8 +219,6 @@ function googleMap($window) {
       let infoWindow = null;
       const markers = [];
 
-      console.log('scope', $scope.weather);
-
       function addLocations() {
         $scope.locations.forEach(function(location){
           // console.log(location)
@@ -257,18 +255,15 @@ function googleMap($window) {
       }
 
       function circleClick (location, circle) {
-        console.log('clicked', location);
         $scope.lat = location.latitude;
         $scope.lng = location.longitude;
         $scope.selected = location;
-        console.log('selected', $scope.selected);
         $scope.getLatLng({lat: $scope.lat, lng: $scope.lng});
 
 
         const htmlElement = `<div>
                                 <h4 id="iw-title">Location Name: ${location.location.name}</h4>
-                                <h4 id="iw-title">Probability: ${location.probability}%</h4>
-                                <a>more information</a>
+                                <h4 id="iw-title">Probability of seeing the Aurora: ${location.probability}%</h4>
                                 '<div class="iw-bottom-gradient"></div>
                                </div>`;
         if(infoWindow) infoWindow.close();

@@ -1,12 +1,12 @@
-{{tripsIndex.all}}
-<div class = "index">
+
+<div class="container">
 <div class="row">
-  <div  if="main.isAuthenticated() && main.currentUser.id === tripsIndex.trip.user.id" ng-repeat="trip in tripsIndex.all" class="col-md-3">
+  <div  if="main.isAuthenticated() && main.currentUser.id === tripsIndex.trip.user.id" ng-repeat="trip in tripsIndex.all" class="col-md-6 index">
     <a ui-sref="tripsShow({ id: trip.id })"><h2>{{ trip.name }}</h2></a>
-    <h3>{{ trip.date }}</h3>
-    <h3>{{ trip.origin_airport }}</h3>
-    <h3>{{trip.destination_airport}}</h3>
-    <h3>{{ trip.user}}</h3>
+    <h3>Created By: {{trip.user.username}}</h3>
+    <h3>Trip Date: {{ trip.date }}</h3>
+    <h3>Staring Airport: {{ trip.origin_airport }}</h3>
+    <h3>Destination Airport: {{trip.destination_airport}}</h3>
   </div>
 </div>
 </div>

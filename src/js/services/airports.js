@@ -7,7 +7,7 @@ Airports.$inject = ['$http', 'API_URL'];
 function Airports($http, API_URL) {
   const vm = this;
   function getAirports(origin_lat, origin_lng, lat, lng) {
-    console.log('service', origin_lat, origin_lng);
+  
 
     return $http
     .get(`${API_URL}/airports`, { params: { origin_lat, origin_lng, lat, lng} })

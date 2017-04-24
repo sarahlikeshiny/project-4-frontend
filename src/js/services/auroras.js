@@ -10,7 +10,6 @@ function Auroras($http, API_URL) {
     return $http
     .get(`${API_URL}/auroraData`, { params: { lat, lng} })
     .then((response) => {
-      console.log('aurora', response);
       return response.data;
     });
   }

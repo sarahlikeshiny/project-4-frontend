@@ -25,7 +25,7 @@ function TripsNewCtrl(Trip, $state ) {
     Trip
       .save({ trip: vm.trip })
       .$promise
-      .then(() => $state.go('tripsShow'));
+      .then((trip) => $state.go('tripsShow', { id: trip.id }));
   }
 
 
@@ -57,7 +57,7 @@ function TripsEditCtrl(Trip, $stateParams, $state, $scope, $auth, airports, auro
   vm.aurora = [];
 
   vm.trip = Trip.get($stateParams);
-  console.log($stateParams);
+
 
   function tripsUpdate() {
 
@@ -93,7 +93,6 @@ function TripsEditCtrl(Trip, $stateParams, $state, $scope, $auth, airports, auro
       auroras.getAuroras(lat, lng)
         .then((data) => {
           vm.weather = data.weather;
-          console.log(data.weather);
           vm.aurora = data;
         });
     }

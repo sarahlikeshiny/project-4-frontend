@@ -104,9 +104,6 @@ nav {
     }
   }
 
-
-
-
 // Edit page
 
 .google-map {
@@ -132,24 +129,26 @@ nav {
   h2 {
     text-align: center;
     margin-bottom: 20px;
+    border-bottom: 2px solid $button;
   }
   h3 {
     text-align: center;
+    border-bottom: solid 2px $button;
   }
   p {
     padding: 0 4px;
-
+    text-align: center;
   }
-  .selected {
-    background-color: $hover;
-    p {
-      color: black;
-      padding: 0 4px;
-    }
-    h2 {
-      color: black;
-      padding: 0 4px;
-    }
+}
+.selected {
+  background-color: $hover;
+  p {
+    color: black;
+    padding: 0 4px;
+  }
+  h2 {
+    color: black;
+    padding: 0 4px;
   }
 }
 #flightSelector {
@@ -157,17 +156,31 @@ nav {
   text-align: center;
   &:hover {
     text-decoration: underline;
-    color: $hover;
+    color: $button;
   }
+}
+#weatherHeader {
+    border: solid 2px $button;
+    padding: 10px;
+    margin: 5px;
+}
+#weatherData {
+  border: solid 2px $button;
+  padding: 10px;
+  margin: 5px;
 }
 
 // show page-----------------------------------------------------
 #showPage {
   .right {
+    text-align: center;
     width: 40%;
     right: 0;
     float: right;
-    margin: 8% -5% 5% 0;
+    padding: 10px;
+    margin: 10% 5% 5% 0;
+    border: 2px solid $button;
+    border-radius: 10%;
       .details {
         h2 {
           text-decoration: underline;
@@ -211,13 +224,33 @@ nav {
 }
 //index------------------
 
-.col-md-3 {
+.index {
   border: solid 4px $button;
-  padding: 20px;
+  padding: 40px;
   margin: 20px;
   a, h2 {
     color: $button;
     border-bottom: solid 4px $hover;
+    margin-bottom: 10px;
+    &:hover {
+      text-decoration: none;
+      color: $hover;
+    }
+  }
+}
+//login----------------------------------------
+.loginForm, .registerForm {
+  border:  solid 4px $button;
+  margin: 150px;
+  padding: 30px;
+    input {
+      margin-top: 20px;
+      &:focus {
+        outline: none;
+      }
+    }
+  a {
+    color: $button;
     &:hover {
       text-decoration: none;
       color: $hover;
@@ -273,6 +306,10 @@ nav {
       }
     }
   }
+
+//burger-------------------------------------------------
+
+
 
 //animations---------------------------------------------
 @keyframes bounce {

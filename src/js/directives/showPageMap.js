@@ -23,7 +23,7 @@ function showPageMap($window) {
       // console.log($scope.locations);
       // let infoWindow = null;
       let line = null;
-      console.log($scope.trip);
+      
 
       const originLatLng = {lat: $scope.trip.origin_lat, lng: $scope.trip.origin_lng};
       const destinationLatLng = {lat: $scope.trip.destination_lat, lng: $scope.trip.destination_lng};
