@@ -1,3 +1,14 @@
+###Aurora Explorer
+##WDI 25 Project Four. Sarah Miller Individual Project
+
+
+
+
+
+
+
+
+
 ### Using this Angular Gulp Setup
 
 To get setup with the starter-code, you first need to run:

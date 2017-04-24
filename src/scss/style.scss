@@ -167,12 +167,14 @@ nav {
              display: inline-block;
              &:hover {
                color: $button;
+               background: none;
               //  animation: pulse 0.75s infinite;
              }
              &.active {
                color: $hover;
                animation: none;
                text-decoration: underline;
+               background: none;
              }
            }
          }
@@ -267,7 +269,7 @@ nav {
     width: 50%;
     position: fixed;
     .showpage {
-      height: 95vh;
+      height: 100vh;
       border-left: 20px;
       display: inline-block;
       border:1px solid grey;

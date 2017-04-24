@@ -53,17 +53,6 @@ function TripsShowCtrl(Trip, $stateParams, $state, $uibModal) {
 
 }
 
-//
-//   function tripsDelete() {
-//     vm.trip
-//       .$remove()
-//       .then(() => $state.go('tripsNew'));
-//   }
-//
-//   vm.delete = tripsDelete;
-// }
-
-
 
 TripsEditCtrl.$inject = ['Trip', '$stateParams', '$state', '$scope', '$auth', 'airports', 'auroras' ];
 function TripsEditCtrl(Trip, $stateParams, $state, $scope, $auth, airports, auroras ) {
