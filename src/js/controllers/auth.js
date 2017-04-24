@@ -12,6 +12,7 @@ function RegisterCtrl($auth, $state) {
     if (vm.registerForm.$valid) {
       $auth.signup(vm.user)
         .then(() => $state.go('login'));
+            console.log('vm.user', vm.user);
     }
   }
 
@@ -30,11 +31,11 @@ function LoginCtrl($auth, $state, $rootScope) {
         .then((res) => {
           console.log(vm.credentials);
          // console.log('response', res);
-          const currentUserId = $auth.getPayload().userId;
+          const currentUserId = $auth.getPayload().user;
          console.log('userId', currentUserId);
           $rootScope.$broadcast('loggedIn', res.data.user);
           console.log('user', res.data.user);
-          $state.go('usersShow', { id: currentUserId });
+          $state.go('tripsIndex', { id: currentUserId });
         });
     }
   }

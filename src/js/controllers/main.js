@@ -10,6 +10,8 @@ function MainCtrl($rootScope, $state, $auth) {
 
   vm.logout = logout;
 
+  vm.currentUser = [];
+
   function logout(){
     $auth.logout();//remove the token
     $state.go('login');//send the user to the login
@@ -23,5 +25,8 @@ function MainCtrl($rootScope, $state, $auth) {
   $rootScope.$on('$stateChangeSuccess', () => {
     if (vm.stateHasChanged) vm.message = null;//stops the message from persisting across the states.
     if(!vm.stateHasChanged) vm.stateHasChanged = true;
+    if($auth.getPayload()) vm.currentUser = $auth.getPayload();
+    console.log('workigggg', vm.currentUser);
+
   });
 }

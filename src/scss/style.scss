@@ -178,7 +178,7 @@ nav {
     width: 50%;
     position: fixed;
     .showpage {
-      height: 100vh;
+      height: 95vh;
       border-left: 20px;
       display: inline-block;
       border:1px solid grey;
@@ -206,6 +206,21 @@ nav {
       border-left: 20px;
       display: inline-block;
       border:1px solid grey;
+    }
+  }
+}
+//index------------------
+
+.col-md-3 {
+  border: solid 4px $button;
+  padding: 20px;
+  margin: 20px;
+  a, h2 {
+    color: $button;
+    border-bottom: solid 4px $hover;
+    &:hover {
+      text-decoration: none;
+      color: $hover;
     }
   }
 }
