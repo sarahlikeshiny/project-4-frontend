@@ -15,6 +15,7 @@
         <h3>Flying with; {{ tripsShow.trip.airline }}</h3>
         <h3>Price £{{ tripsShow.trip.price }}</h3>
         <a class="generalbutton" ui-sref="tripsEdit({ id: tripsShow.trip.id })">Edit</a>
+        <button ng-click="tripsShow.open()" class="btn btn-danger">Delete</button>
         <a ng-click="tripsShow.delete()" class="generalbutton">Delete</a>
       </div>
     </div>

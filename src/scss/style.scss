@@ -63,11 +63,7 @@ ul, li {
   list-style: none;
 }
 
-//Nav----------------
-
-nav {
-  overflow: hidden;
-  height: 40px;
+.rainbowbackground {
   background: #f76009;
   background: -moz-linear-gradient(left,  #f76009 7%, #04b6d6 33%, #ff0f43 65%, #408c54 93%);
   background: -webkit-gradient(linear, left top, right top, color-stop(7%,#f76009), color-stop(33%,#04b6d6), color-stop(65%,#ff0f43), color-stop(93%,#408c54));
@@ -76,24 +72,118 @@ nav {
   background: -ms-linear-gradient(left,  #f76009 7%,#04b6d6 33%,#ff0f43 65%,#408c54 93%);
   background: linear-gradient(to right,  #f76009 7%,#04b6d6 33%,#ff0f43 65%,#408c54 93%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f76009', endColorstr='#408c54',GradientType=1 );
-  transition: background-color 0.2s ease;
-  ul {
-    list-style: none;
-    margin-top: 0;
-      a {
-        float: right;
-        text-decoration: none;
-        padding: 10px;
-        color: white;
-        font-style: oblique;
-        letter-spacing: 1px;
-        font-size: 15px;
-        &:hover, &:focus {
-          color: $hover;
-          text-decoration: none;
+}
+
+
+.menu {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  z-index: 3;
+  .burger {
+    width: 20px;
+    height: 15px;
+    @extend .centered-styles;
+    span {
+      display: block;
+      position: absolute;
+      height: 3px;
+      width: 100%;
+      background-color: $hover;
+      border-radius: 3px;
+      opacity: 1;
+      left: 0;
+      transform: rotate(0deg);
+      transition: all 0.25s ease-in-out;
+      &:nth-child(1) {
+        top: 0px;
+      }
+      &:nth-child(2),
+      &:nth-child(3) {
+        top: 6px;
+      }
+      &:nth-child(4) {
+        top: 12px;
+      }
+    }
+  }
+  &.open {
+    .burger {
+      span {
+        background-color: $hover;
+        &:nth-child(1),
+        &:nth-child(4) {
+          top: 6px;
+          width: 0%;
+          left: 50%;
+        }
+        &:nth-child(2) {
+          transform: rotate(45deg);
+        }
+        &:nth-child(3) {
+          transform: rotate(-45deg);
         }
       }
     }
+  }
+}
+
+nav {
+   > div {
+     z-index: 2;
+     width: 100%;
+     height: 10%;
+     position: absolute;
+     top: 0;
+     transition: all 0.5s ease-in-out;
+    //  background-color: rgba(0, 0, 0, 0.3);
+    @extend .rainbowbackground;
+    //  text-align: center;
+     &.right {
+       top: -100%;
+      //  background-color: rgba(0, 0, 0, 0.3);
+
+     }
+     .links {
+       // @extend .centered-styles;
+       ul {
+         background: none;
+         float: right;
+         text-align: left;
+         margin: 20px 60px 0 0;
+         li {
+           white-space: nowrap;
+           line-height: 1.5;
+           list-style: none;
+           color: $button;
+           a {
+             font-size: 18px;
+             color: $button;
+             font-style: oblique;
+             text-transform: capitalize;
+             display: inline-block;
+             &:hover {
+               color: $button;
+              //  animation: pulse 0.75s infinite;
+             }
+             &.active {
+               color: $hover;
+               animation: none;
+               text-decoration: underline;
+             }
+           }
+         }
+       }
+     }
+   }
+   &.open {
+     .right {
+       top: 0;
+     }
+   }
   }
 
 // Edit page
@@ -104,12 +194,6 @@ nav {
   border-left: 20px;
   display: inline-block;
   border:1px solid grey;
-}
-.gm-style-iw {
-   width: 350px !important;
-   top: 0 !important;
-   left: 0 !important;
-   border-radius: 2px 2px 0 0;
 }
 
 
@@ -240,20 +324,20 @@ nav {
         &:focus {
           outline:none;
       }
-    a {
-      color: $button;
-      &:hover {
-        text-decoration: none;
-        color: $hover;
-      }
     }
   }
+  .register {
+    color: $button;
+    &:hover {
+      text-decoration: none;
+      color: $hover;
+    }
 }
 
 //homepage
 
 .homepage {
-  height: 95vh;
+  height: 100vh;
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/images/hero.jpg');
   background-position: center;
   background-size: cover;

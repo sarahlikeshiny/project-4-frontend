@@ -3,7 +3,8 @@ angular
   .controller('TripsIndexCtrl', TripsIndexCtrl)
   .controller('TripsNewCtrl', TripsNewCtrl)
   .controller('TripsShowCtrl', TripsShowCtrl)
-  .controller('TripsEditCtrl', TripsEditCtrl);
+  .controller('TripsEditCtrl', TripsEditCtrl)
+  .controller('TripsDeleteCtrl', TripsDeleteCtrl);
 
 
 TripsIndexCtrl.$inject = ['Trip'];
@@ -32,20 +33,35 @@ function TripsNewCtrl(Trip, $state ) {
   vm.create = tripsCreate;
 }
 
-TripsShowCtrl.$inject = ['Trip', '$stateParams', '$state'];
-function TripsShowCtrl(Trip, $stateParams, $state) {
+TripsShowCtrl.$inject = ['Trip', '$stateParams', '$state', '$uibModal'];
+function TripsShowCtrl(Trip, $stateParams, $state, $uibModal) {
   const vm = this;
   vm.trip = Trip.get($stateParams);
 
-
-  function tripsDelete() {
-    vm.trip
-      .$remove()
-      .then(() => $state.go('tripsNew'));
+  function openModal(){
+    $uibModal.open({
+      templateUrl: 'js/views/partials/tripDelete.html',
+      controller: 'TripsDeleteCtrl as tripsDelete',
+      resolve: {
+        currentTrip: () => {
+          return vm.trip; //already have the vm.bird from the database so just pass in.
+        }
+      }
+    });
   }
+  vm.open = openModal;
 
-  vm.delete = tripsDelete;
 }
+
+//
+//   function tripsDelete() {
+//     vm.trip
+//       .$remove()
+//       .then(() => $state.go('tripsNew'));
+//   }
+//
+//   vm.delete = tripsDelete;
+// }
 
 
 
@@ -114,5 +130,27 @@ function TripsEditCtrl(Trip, $stateParams, $state, $scope, $auth, airports, auro
 
   vm.addFlight = addFlight;
 
+
+}
+TripsDeleteCtrl.inject = ['$uibModalInstance', 'currentTrip', '$state'];//instance of the modal thats just been opened. The currentBird is the item from resolve
+function TripsDeleteCtrl($uibModalInstance, currentTrip, $state) {
+  const vm = this;
+  vm.trip = currentTrip;
+
+  function closeModal() {
+    $uibModalInstance.close();
+  }
+  vm.close = closeModal;
+
+  function tripsDelete() {
+    vm.trip
+      .$remove()
+      .then(() => {
+        $state.go('tripsIndex');
+        $uibModalInstance.close();//go to birds index page and close modal
+      });
+  }
+
+  vm.delete = tripsDelete;
 
 }
