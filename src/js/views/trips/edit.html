@@ -4,7 +4,6 @@
   <google-map locations="probabilities.all" lat="tripsEdit.trip.destination_lat" lng="tripsEdit.trip.destination_lng" weather="tripsEdit.weather" selected="tripsEdit.trip.selected" center="{lat: 54.7636873, lng: 0.09233982}" ng-if="probabilities.all.$resolved" get-lat-lng="tripsEdit.getLatLng(lat, lng)"></google-map>
 </div>
 <p>Circles represent the probability of seeing the Aurora, based on satellite and weather data, click to see more information and to see flights to this location</p>
-
 <a class="generalbutton" ng-click="tripsEdit.update()">Choose this location and flight</a>
 <div class="row" id="weatherHeader">
   <h2 class="col-md-4">Current weather for: {{tripsEdit.trip.selected.location.name}}</h2>
@@ -21,6 +20,7 @@
 </div>
 <div class="flightsBoard">
   <div class="row">
+    <h4>select a flight</h4>
     <div class="col-md-12">
       <h2>Flights to {{tripsEdit.trip.selected.location.name}}</h2>
         <div class="row">
@@ -44,7 +44,7 @@
   </div>
 </div>
   <ul>
-    <li ng-repeat="flight in tripsEdit.flights" ng-class="{ 'selected': tripsEdit.selectedFlight === flight.QuoteId }">
+    <li ng-repeat="flight in tripsEdit.flights | orderBy:'MinPrice'" ng-class="{ 'selected': tripsEdit.selectedFlight === flight.QuoteId }">
       <div class="row">
         <div class="col-md-2">
         <h2 id="flightSelector" ng-click="tripsEdit.addFlight(flight)">{{ flight.DestinationCity }}</h2>
@@ -53,7 +53,7 @@
         <div class="col-md-2">
           <p>{{ flight.DestinationAirport}}</p>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
           <p>{{ flight.OriginAirport}}</p>
         </div>
       <div class="col-md-2">
@@ -65,7 +65,7 @@
     </div>
     </div>
     </li>
-  </ul>   
+  </ul>
 </div>
 
 <!-- <form ng-submit="tripsEdit.update()">

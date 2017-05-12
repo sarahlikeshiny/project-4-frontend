@@ -1,0 +1,49 @@
+<div class="flightsBoard">
+  <div class="row">
+    <div class="col-md-12">
+      {{tripsEdit.trip}}
+      {{tripsEdit.flights}}
+      <h2>Flights to {{tripsEdit.trip.location.name}}</h2>
+        <div class="row">
+        <div class="col-md-2">
+          <h3>City</h3>
+        </div>
+        <div class="col-md-2">
+          <h3>Country</h3>
+        </div>
+        <div class="col-md-3">
+          <h3>Departure Airport</h3>
+        </div>
+        <div class="col-md-2">
+          <h3>Price</h3>
+        </div>
+        <div class="col-md-2">
+          <h3>Airline</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <ul>
+    <li ng-repeat="flight in tripsEdit.flights" ng-class="{ 'selected': tripsEdit.selectedFlight === flight.QuoteId }">
+      <div class="row">
+        <div class="col-md-2">
+        <h2 id="flightSelector" ng-click="tripsEdit.addFlight(flight)">{{ flight.DestinationCity }}</h2>
+        </div>
+    <div class="row">
+        <div class="col-md-2">
+          <p>{{ flight.DestinationAirport}}</p>
+        </div>
+        <div class="col-md-2">
+          <p>{{ flight.OriginAirport}}</p>
+        </div>
+      <div class="col-md-2">
+        <p>£{{ flight.MinPrice}}</p>
+      </div>
+      <div class="col-md-2">
+        <p>{{ flight.CarrierName}}</p>
+      </div>
+    </div>
+    </div>
+    </li>
+  </ul>

@@ -44,7 +44,7 @@ function TripsShowCtrl(Trip, $stateParams, $state, $uibModal) {
       controller: 'TripsDeleteCtrl as tripsDelete',
       resolve: {
         currentTrip: () => {
-          return vm.trip; //already have the vm.bird from the database so just pass in.
+          return vm.trip;
         }
       }
     });
@@ -73,20 +73,22 @@ function TripsEditCtrl(Trip, $stateParams, $state, $scope, $auth, airports, auro
 
   vm.update = tripsUpdate;
 
+
   function getLatLng(lat, lng) {
     // console.log('inside here');
     // console.log(lat, lng);
     vm.chosenLatLng = { lat, lng };
     // console.log('chosenLatLng', vm.chosenLatLng);
+    vm.trip.destination_lat = vm.chosenLatLng.lat;
+    vm.trip.destination_lng = vm.chosenLatLng.lng;
     $scope.$apply();
 
 
-    getAirports(vm.trip.origin_lat, vm.trip.origin_lng, lat, lng);
+    getAirports(vm.trip.origin_lat, vm.trip.origin_lng,vm.trip.destination_lat,vm.trip.destination_lng);
 
     function getAirports() {
-      airports.getAirports(vm.trip.origin_lat, vm.trip.origin_lng,lat, lng)
+      airports.getAirports(vm.trip.origin_lat, vm.trip.origin_lng,vm.trip.destination_lat,   vm.trip.destination_lng)
       .then((quotes) => {
-        // console.log(quotes);
         vm.flights = quotes;
         // console.log('vm.flights', vm.flights);
       });
@@ -104,7 +106,6 @@ function TripsEditCtrl(Trip, $stateParams, $state, $scope, $auth, airports, auro
   }
 
   vm.getLatLng = getLatLng;
-
   function addFlight(flight) {
     // console.log(flight);
     vm.selectedFlight = flight.QuoteId;
@@ -113,11 +114,11 @@ function TripsEditCtrl(Trip, $stateParams, $state, $scope, $auth, airports, auro
     vm.trip.origin_airport = flight.OriginAirport;
     vm.trip.price = flight.MinPrice;
     vm.trip.airline = flight.CarrierName;
-    vm.trip.destination_lat = vm.chosenLatLng.lat;
-    vm.trip.destination_lng = vm.chosenLatLng.lng;
+
   }
 
   vm.addFlight = addFlight;
+
 
 
 }
