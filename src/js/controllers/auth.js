@@ -28,12 +28,8 @@ function LoginCtrl($auth, $state, $rootScope) {
     if (vm.loginForm.$valid) {
       $auth.login(vm.credentials)
         .then((res) => {
-          console.log(vm.credentials);
-         // console.log('response', res);
           const currentUserId = $auth.getPayload().userId;
-         console.log('userId', currentUserId);
           $rootScope.$broadcast('loggedIn', res.data.user);
-          console.log('user', res.data.user);
           $state.go('tripsIndex', { id: currentUserId });
         });
     }
